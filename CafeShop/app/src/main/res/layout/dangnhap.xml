@@ -62,7 +62,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="36dp"
             android:orientation="horizontal">
 
             <View
@@ -90,7 +90,13 @@
                 android:layout_marginRight="60dp"
                 android:layout_weight="1"
                 android:background="@color/colorAccent" />
+
         </LinearLayout>
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/FacebookLogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
