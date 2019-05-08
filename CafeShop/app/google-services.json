@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "597689715300",
+    "firebase_url": "https://cafeshop-74d4a.firebaseio.com",
+    "project_id": "cafeshop-74d4a",
+    "storage_bucket": "cafeshop-74d4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597689715300:android:eb20bdeaa46fd714",
+        "android_client_info": {
+          "package_name": "com.example.cafeshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597689715300-66lq7frv9nq89fasikd3g1oa0ebjg2oa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cafeshop",
+            "certificate_hash": "02b0ea90153955cb98956fc00d23a57d950aa417"
+          }
+        },
+        {
+          "client_id": "597689715300-dc1i29s92n7d5be0n5dpdjegnf1ccuit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsoikbZL-vkY2liPh5nDoTVR3kNfJQvD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "597689715300-dc1i29s92n7d5be0n5dpdjegnf1ccuit.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

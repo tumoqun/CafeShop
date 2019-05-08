@@ -84,11 +84,50 @@
         <View
             android:id="@+id/view5"
             android:layout_width="match_parent"
+<<<<<<< HEAD
             android:layout_height="2dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="60dp"
             android:layout_weight="1"
             android:background="@color/colorAccent" />
+=======
+            android:layout_height="36dp"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="OR"
+                android:textColor="@color/colorAccent" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="60dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent" />
+
+        </LinearLayout>
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/FacebookLogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+>>>>>>> 8ea6f945bf602edbd6e0a9e8941cca493a74e750
     </LinearLayout>
 
 </LinearLayout>
