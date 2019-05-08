@@ -27,14 +27,14 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
     implementation 'com.google.firebase:firebase-auth:16.2.1'
-<<<<<<< HEAD
+
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
-=======
+
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     implementation 'com.facebook.android:facebook-login:4.42.0'
->>>>>>> 8ea6f945bf602edbd6e0a9e8941cca493a74e750
+
 }
 apply plugin: 'com.google.gms.google-services'
 com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
