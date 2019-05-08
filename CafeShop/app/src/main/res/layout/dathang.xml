@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@android:color/holo_orange_dark"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            app:srcCompat="@android:drawable/ic_popup_reminder" />
+    </android.support.v7.widget.Toolbar>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/btnNoiBat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="Nổi bật"
+            android:background="@drawable/custom_radio_doan_thucuong"/>
+
+        <RadioButton
+            android:id="@+id/btnThucUong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Thức uống"
+            android:background="@drawable/custom_radio_doan_thucuong"/>
+
+        <RadioButton
+            android:id="@+id/btnDoAn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Đồ ăn"
+            android:background="@drawable/custom_radio_doan_thucuong"/>
+    </RadioGroup>
+
+
+
+</LinearLayout>
