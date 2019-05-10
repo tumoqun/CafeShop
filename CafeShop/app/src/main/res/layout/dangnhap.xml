@@ -9,15 +9,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="350dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         app:srcCompat="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
         android:orientation="vertical">
 
         <EditText
@@ -47,18 +46,42 @@
             android:textColorHint="@color/colorAccent"
             android:textSize="12sp" />
 
-        <Button
-            android:id="@+id/DangNhap"
-            android:layout_width="165dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/radius_button"
-            android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:text="sign in "
-            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/DangNhap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/radius_button"
+                android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Đăng nhập"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+            <Button
+                android:id="@+id/btnDangKi"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/radius_button"
+                android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="đăng kí"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,15 +92,15 @@
                 android:id="@+id/view4"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorAccent" />
 
             <TextView
                 android:id="@+id/textView7"
-                android:layout_width="20dp"
+                android:layout_width="66dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:gravity="center"
                 android:text="OR"
                 android:textColor="@color/colorAccent" />
@@ -86,8 +109,7 @@
                 android:id="@+id/view5"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="60dp"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorAccent" />
 
@@ -95,8 +117,9 @@
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/FacebookLogin"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
 
     </LinearLayout>
 

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cafeshop.MainActivity;
@@ -40,6 +41,9 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
     EditText edPassword;
     LoginButton btnDangNhapFacbook;
 
+
+    Button btndangki;
+
     public static int KIEMTRA_PROVIDER_DANGNHAP=0;
     CallbackManager mCallbackFacebook;
     LoginManager loginManager;
@@ -56,27 +60,30 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseAuth.signOut();
 
+        btndangki=(Button) findViewById(R.id.btnDangKi);
         btnDangNhap = (Button) findViewById(R.id.DangNhap);
         edEmail = (EditText) findViewById(R.id.Email);
         edPassword = (EditText) findViewById(R.id.Password);
+
+
+        btndangki.setOnClickListener(this);
         btnDangNhapFacbook=(LoginButton) findViewById(R.id.FacebookLogin);
         btnDangNhapFacbook.setReadPermissions("email","public_profile");
-
         btnDangNhapFacbook.setOnClickListener(this);
-
+       // btnDangNhap.setOnClickListener(this);
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String Email=edEmail.getText().toString();
                 String Password=edPassword.getText().toString();
-                firebaseAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                firebaseAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(DangNhap.this,"Dang nhap thanh cong",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DangNhap.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            Toast.makeText(DangNhap.this,"Dang nhap that bai",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DangNhap.this,"Sai tên tài khoản hoặc mật khẩu",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -119,6 +126,30 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
         firebaseAuth.removeAuthStateListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        int id=v.getId();
+//        if (id==R.id.FacebookLogin){
+//            DangNhapFacebook();
+//        }
+//        else if(id==R.id.DangNhap){
+//            DangNhap();
+//        }
+        switch(id){
+            case R.id.FacebookLogin:
+                DangNhapFacebook();
+                break;
+
+//            case R.id.DangNhap:
+//                DangNhap();
+//                break;
+
+            case R.id.btnDangKi:
+                 Intent iDangKi=new Intent(DangNhap.this, DangKi.class);
+                 startActivity(iDangKi);
+                break;
+        }
+    }
     private void ChungThucDangNhapFireBase(String tokenID){
         if(KIEMTRA_PROVIDER_DANGNHAP==2){
             AuthCredential authCredential= FacebookAuthProvider.getCredential(tokenID);
@@ -130,6 +161,7 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         mCallbackFacebook.onActivityResult(requestCode,resultCode,data);
+
     }
 
     @Override
@@ -137,11 +169,33 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
     }
 
 
-    @Override
-    public void onClick(View v) {
-        int id=v.getId();
-        if (id==R.id.FacebookLogin){
-            DangNhapFacebook();
+
+
+//    private void DangNhap(){
+//        String Email=edEmail.getText().toString();
+//        String Password=edPassword.getText().toString();
+//        //firebaseAuth.signInWithEmailAndPassword(Email,Password);
+//        firebaseAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if(task.isSuccessful()){
+//                            Toast.makeText(DangNhap.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
+//                        }
+//                        else {
+//                            Toast.makeText(DangNhap.this,"Sai tên tài khoản hoặc mật khẩu",Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//    }
+    //Kiểm tra người đung đăng nhạp hay đăng xuất
+    public void onAuStateChange(@NonNull FirebaseAuth firebaseAuth){
+        FirebaseUser user=firebaseAuth.getCurrentUser();
+        if(user!=null){
+            Intent iTrangChu = new Intent(DangNhap.this,TrangChu.class);
+            startActivity(iTrangChu);
+        }
+        else {
+
         }
     }
 }
