@@ -10,14 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-<<<<<<< HEAD
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
-=======
+        <activity android:name=".MainActivity"/>
         android:theme="@style/AppTheme">
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-        <activity android:name=".View.DangNhap">
->>>>>>> 8ea6f945bf602edbd6e0a9e8941cca493a74e750
+        <activity android:name=".View.DangNhap"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

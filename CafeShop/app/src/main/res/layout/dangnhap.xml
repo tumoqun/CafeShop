@@ -84,13 +84,13 @@
         <View
             android:id="@+id/view5"
             android:layout_width="match_parent"
-<<<<<<< HEAD
+
             android:layout_height="2dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="60dp"
             android:layout_weight="1"
             android:background="@color/colorAccent" />
-=======
+
             android:layout_height="36dp"
             android:orientation="horizontal">
 
@@ -127,7 +127,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
->>>>>>> 8ea6f945bf602edbd6e0a9e8941cca493a74e750
     </LinearLayout>
 
 </LinearLayout>

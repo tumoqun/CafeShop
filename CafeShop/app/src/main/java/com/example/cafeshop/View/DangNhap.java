@@ -74,6 +74,7 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(DangNhap.this,"Dang nhap thanh cong",Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(DangNhap.this,)
                         }
                         else {
                             Toast.makeText(DangNhap.this,"Dang nhap that bai",Toast.LENGTH_SHORT).show();
