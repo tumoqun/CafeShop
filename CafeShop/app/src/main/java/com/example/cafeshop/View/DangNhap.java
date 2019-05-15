@@ -160,9 +160,5 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
     }
     public void onAuStateChange(@NonNull FirebaseAuth firebaseAuth){
         FirebaseUser user=firebaseAuth.getCurrentUser();
-        if(user!=null){
-        }
-        else {
-        }
     }
 }
