@@ -60,7 +60,7 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseAuth.signOut();
 
-        btndangki=(Button) findViewById(R.id.btnDangKi);
+        btndangki=(Button) findViewById(R.id.btnDangKi_1);
         btnDangNhap = (Button) findViewById(R.id.DangNhap);
         edEmail = (EditText) findViewById(R.id.Email);
         edPassword = (EditText) findViewById(R.id.Password);
@@ -70,10 +70,10 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
         btnDangNhapFacbook=(LoginButton) findViewById(R.id.FacebookLogin);
         btnDangNhapFacbook.setReadPermissions("email","public_profile");
         btnDangNhapFacbook.setOnClickListener(this);
-       // btnDangNhap.setOnClickListener(this);
-        btnDangNhap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnDangNhap.setOnClickListener(this);
+    }
+
+    private void DangNhap(){
                 String Email=edEmail.getText().toString();
                 String Password=edPassword.getText().toString();
                 firebaseAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
@@ -81,6 +81,8 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(DangNhap.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
+                            Intent iTrangChu=new Intent(DangNhap.this, TrangChu.class);
+                            startActivity(iTrangChu);
                         }
                         else {
                             Toast.makeText(DangNhap.this,"Sai tên tài khoản hoặc mật khẩu",Toast.LENGTH_SHORT).show();
@@ -88,9 +90,6 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
                     }
                 });
             }
-        });
-
-    }
 
     private void DangNhapFacebook(){
         loginManager.registerCallback(mCallbackFacebook, new FacebookCallback<LoginResult>() {
@@ -129,25 +128,16 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
     @Override
     public void onClick(View v) {
         int id=v.getId();
-//        if (id==R.id.FacebookLogin){
-//            DangNhapFacebook();
-//        }
-//        else if(id==R.id.DangNhap){
-//            DangNhap();
-//        }
         switch(id){
             case R.id.FacebookLogin:
                 DangNhapFacebook();
                 break;
-
-//            case R.id.DangNhap:
-//                DangNhap();
-//                break;
-
-            case R.id.btnDangKi:
-                 Intent iDangKi=new Intent(DangNhap.this, DangKi.class);
-                 startActivity(iDangKi);
+            case R.id.DangNhap:
+                 DangNhap();
                 break;
+            case R.id.btnDangKi_1:
+                Intent iDangKi=new Intent(DangNhap.this, DangKi.class);
+                startActivity(iDangKi);
         }
     }
     private void ChungThucDangNhapFireBase(String tokenID){
@@ -167,35 +157,11 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
     @Override
     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
     }
-
-
-
-
-//    private void DangNhap(){
-//        String Email=edEmail.getText().toString();
-//        String Password=edPassword.getText().toString();
-//        //firebaseAuth.signInWithEmailAndPassword(Email,Password);
-//        firebaseAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if(task.isSuccessful()){
-//                            Toast.makeText(DangNhap.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-//                        }
-//                        else {
-//                            Toast.makeText(DangNhap.this,"Sai tên tài khoản hoặc mật khẩu",Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
-//    }
-    //Kiểm tra người đung đăng nhạp hay đăng xuất
     public void onAuStateChange(@NonNull FirebaseAuth firebaseAuth){
         FirebaseUser user=firebaseAuth.getCurrentUser();
         if(user!=null){
-            Intent iTrangChu = new Intent(DangNhap.this,TrangChu.class);
-            startActivity(iTrangChu);
         }
         else {
-
         }
     }
 }
