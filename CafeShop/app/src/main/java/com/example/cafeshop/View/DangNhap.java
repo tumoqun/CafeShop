@@ -136,6 +136,9 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
                  DangNhap();
                 Intent iDangNhap=new Intent(DangNhap.this, TrangChu.class);
                 startActivity(iDangNhap);
+=======
+
+>>>>>>> 23212159ee530aea37c6883b9e8a3e1f0dfdfa28
                 break;
             case R.id.btnDangKi_1:
                 Intent iDangKi=new Intent(DangNhap.this, DangKi.class);
