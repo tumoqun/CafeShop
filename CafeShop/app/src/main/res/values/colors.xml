@@ -7,4 +7,5 @@
     <color name="colorDarkOrange">#FF8800 </color>
     <color name="colorBlack">#000000</color>
     <color name="colorLightOrange">#ffddbb</color>
+    <color name="colorAccent">#FFFFFF</color>
 </resources>

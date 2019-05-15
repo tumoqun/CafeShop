@@ -20,7 +20,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/Email"
+            android:id="@+id/Email_DangKy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="60dp"
@@ -28,12 +28,12 @@
             android:drawableLeft="@android:drawable/sym_action_email"
             android:ems="10"
             android:hint="Email"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/Password"
+            android:id="@+id/Password_DangKy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="60dp"
@@ -42,10 +42,22 @@
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
             android:textSize="12sp" />
-
+        <EditText
+            android:id="@+id/RetypePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+            android:ems="10"
+            android:hint="Retype Password"
+            android:inputType="textPassword"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="12sp" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,21 +66,7 @@
             android:weightSum="2">
 
             <Button
-                android:id="@+id/DangNhap"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginLeft="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/radius_button"
-                android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="Đăng nhập"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
-
-            <Button
-                android:id="@+id/btnDangKi_1"
+                android:id="@+id/btnDangKi_2"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -82,44 +80,6 @@
                 android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:orientation="horizontal">
-
-            <View
-                android:id="@+id/view4"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@color/colorWhite" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="66dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="OR"
-                android:textColor="@color/colorWhite" />
-
-            <View
-                android:id="@+id/view5"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@color/colorWhite" />
-
-        </LinearLayout>
-
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/FacebookLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center" />
 
     </LinearLayout>
 
