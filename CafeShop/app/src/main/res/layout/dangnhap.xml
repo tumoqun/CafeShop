@@ -28,8 +28,8 @@
             android:drawableLeft="@android:drawable/sym_action_email"
             android:ems="10"
             android:hint="Email"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
             android:textSize="12sp" />
 
         <EditText
@@ -42,8 +42,8 @@
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
             android:textSize="12sp" />
 
         <LinearLayout
@@ -94,7 +94,7 @@
                 android:layout_height="2dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@color/colorAccent" />
+                android:background="@color/colorWhite" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -103,7 +103,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="OR"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorWhite" />
 
             <View
                 android:id="@+id/view5"
@@ -111,7 +111,7 @@
                 android:layout_height="2dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@color/colorAccent" />
+                android:background="@color/colorWhite" />
 
         </LinearLayout>
 
