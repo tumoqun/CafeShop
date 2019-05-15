@@ -145,7 +145,7 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
 //                break;
 
             case R.id.btnDangKi:
-                 Intent iDangKi=new Intent(DangNhap.this, DangKi.class);
+                 Intent iDangKi=new Intent(DangNhap.this, TrangChu.class);
                  startActivity(iDangKi);
                 break;
         }

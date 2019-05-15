@@ -20,11 +20,11 @@
             app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
 
         <RadioGroup
-            android:id="@+id/rbgODauAnGi"
+            android:id="@+id/rgMonAnThucUong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/rbThucUong"
@@ -50,7 +50,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Món ăn"
-                android:textColor="@drawable/change_textcolor_radiogroup"/>
+                android:textColor="@drawable/change_textcolor_radiogroup" />
         </RadioGroup>
 
         <ImageView
