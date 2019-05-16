@@ -153,6 +153,11 @@
     android:textColor="@drawable/change_textcolor_btn_blacktowhite"/>
     </LinearLayout>
 
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
 
 
 
