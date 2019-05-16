@@ -144,6 +144,7 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
                 break;
             case R.id.DangNhap:
                  DangNhap();
+
                 break;
             case R.id.btnDangKi_1:
                 Intent iDangKi=new Intent(DangNhap.this, DangKi.class);
@@ -169,9 +170,5 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
     }
     public void onAuStateChange(@NonNull FirebaseAuth firebaseAuth){
         FirebaseUser user=firebaseAuth.getCurrentUser();
-        if(user!=null){
-        }
-        else {
-        }
     }
 }
