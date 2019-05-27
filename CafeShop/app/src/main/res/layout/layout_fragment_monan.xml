@@ -129,12 +129,12 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
+                    android:background="@drawable/change_buttoncolor_whitetolittleorange"
                     android:drawableBottom="@android:drawable/ic_menu_edit"
                     android:paddingTop="20dp"
                     android:paddingBottom="20dp"
                     android:text="Bài viết"
-                    android:background="@drawable/change_buttoncolor_whitetolittleorange"
-                    android:textColor="@drawable/change_textcolor_btn_blacktowhite"/>
+                    android:textColor="@drawable/change_textcolor_btn_blacktowhite" />
 
                 <Button
                     android:id="@+id/button5"
@@ -145,16 +145,20 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/change_buttoncolor_whitetolittleorange"
                     android:drawableBottom="@android:drawable/btn_star_big_off"
                     android:paddingTop="20dp"
                     android:paddingBottom="20dp"
                     android:text="Top thành viên"
-                    android:background="@drawable/change_buttoncolor_whitetolittleorange"
-                    android:textColor="@drawable/change_textcolor_btn_blacktowhite"/>
+                    android:textColor="@drawable/change_textcolor_btn_blacktowhite" />
             </LinearLayout>
 
 
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent">-->
 
+            <!--</android.support.v7.widget.RecyclerView>-->
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
