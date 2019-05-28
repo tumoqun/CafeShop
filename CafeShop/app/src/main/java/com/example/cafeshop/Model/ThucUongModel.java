@@ -77,7 +77,6 @@ public class ThucUongModel {
 
     //Cần lấy nhiều dữ liệu của nhiều bảng => lắng nghe node cha lớn nhất (root)
     public  void getDanhSachThucUong(final ThucUongInterface thucUongInterface){
-
 //        tạo interface:
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
@@ -103,15 +102,12 @@ public class ThucUongModel {
 //                            Log.d("ktHinhThucUong",valueHinhThucUong + "");
                               hinhanhList.add(valueHinhThucUong.getValue(String.class));
                         }
-
                     thucUongModel.setHinhanh(hinhanhList);
                     thucUongInterface.getDanhSachThucUongModel(thucUongModel);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         };
         nodeRoot.addListenerForSingleValueEvent((valueEventListener));

@@ -1,6 +1,7 @@
 package com.example.cafeshop.Controller;
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,6 +19,7 @@ public class ControllerThucUong {
     ThucUongModel thucUongModel;
     AdapterRecyclerThucUong adapterRecyclerThucUong;
 
+
     public  ControllerThucUong(Context context){
         this.context=context;
         thucUongModel = new ThucUongModel();
@@ -30,7 +32,13 @@ public class ControllerThucUong {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerViewThucUong.setLayoutManager(layoutManager);
         adapterRecyclerThucUong = new AdapterRecyclerThucUong(thucUongModelList, R.layout.layout_recyclerview_thucuong);
+
+        //GridLayoutManager gridLayoutManager = new GridLayoutManager(context,2);
+       // gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // set Horizontal Orientation
+        //recyclerViewThucUong.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
+
         recyclerViewThucUong.setAdapter(adapterRecyclerThucUong);
+        recyclerViewThucUong.setLayoutManager(new GridLayoutManager(context,2));
         //new một interface để ThucUongModel sẽ nhận vô ThucUongInterface
         ThucUongInterface thucUongInterface = new ThucUongInterface() {
             @Override

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,11 +36,11 @@ public class AdapterRecyclerThucUong extends RecyclerView.Adapter<AdapterRecycle
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtTenThucUong;
         ImageView imgThucUong;
-        Button btnDatHang;
+        ImageButton btnGioHang;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTenThucUong=(TextView) itemView.findViewById(R.id.txtTenThucUong);
-            btnDatHang=(Button) itemView.findViewById(R.id.btnDatHang);
+            btnGioHang=(ImageButton) itemView.findViewById(R.id.btnGioHang);
             imgThucUong=(ImageView) itemView.findViewById(R.id.imgThucUong);
         }
     }
