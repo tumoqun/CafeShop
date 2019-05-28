@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -66,6 +67,7 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
         edPassword = (EditText) findViewById(R.id.Password);
 
 
+
         btndangki.setOnClickListener(this);
         btnDangNhapFacbook=(LoginButton) findViewById(R.id.FacebookLogin);
         btnDangNhapFacbook.setReadPermissions("email","public_profile");
@@ -74,22 +76,30 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
     }
 
     private void DangNhap(){
-                String Email=edEmail.getText().toString();
-                String Password=edPassword.getText().toString();
-                firebaseAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(DangNhap.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-                            Intent iTrangChu=new Intent(DangNhap.this, TrangChu.class);
-                            startActivity(iTrangChu);
-                        }
-                        else {
-                            Toast.makeText(DangNhap.this,"Sai tên tài khoản hoặc mật khẩu",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+        String Email=edEmail.getText().toString().trim();
+        String Password=edPassword.getText().toString().trim();
+        if (TextUtils.isEmpty(Email)) {
+            Toast.makeText(DangNhap.this,"Vui lòng nhập Email!",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (TextUtils.isEmpty(Password)){
+            Toast.makeText(DangNhap.this,"Vui lòng nhập mật khẩu!",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        firebaseAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(DangNhap.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
+                    Intent iTrangChu=new Intent(DangNhap.this, TrangChu.class);
+                    startActivity(iTrangChu);
+                }
+                else {
+                    Toast.makeText(DangNhap.this,"Sai tên tài khoản hoặc mật khẩu",Toast.LENGTH_SHORT).show();
+                }
             }
+        });
+    }
 
     private void DangNhapFacebook(){
         loginManager.registerCallback(mCallbackFacebook, new FacebookCallback<LoginResult>() {
@@ -133,8 +143,7 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
                 DangNhapFacebook();
                 break;
             case R.id.DangNhap:
-                 DangNhap();
-
+                DangNhap();
                 break;
             case R.id.btnDangKi_1:
                 Intent iDangKi=new Intent(DangNhap.this, DangKi.class);
