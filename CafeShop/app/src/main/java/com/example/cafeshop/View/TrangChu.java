@@ -27,5 +27,4 @@ public class TrangChu  extends AppCompatActivity {
         viewPagerTrangChu.setAdapter(adapterViewPagerTrangChu);
     }
 
-
 }

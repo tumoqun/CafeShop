@@ -5,7 +5,7 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorBackGroundGrey">#F2F2F2</color>
-    <color name="colorDarkOrange">#FF8800 </color>
+    <color name="colorDarkOrange">#FF8800</color>
     <color name="colorBlack">#000000</color>
     <color name="colorLightOrange">#ffddbb</color>
 </resources>
