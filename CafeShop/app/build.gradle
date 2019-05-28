@@ -39,6 +39,8 @@ dependencies {
     //add firebase realtime database android
     implementation 'com.google.firebase:firebase-database:17.0.0'
 
+    //download dữ liệu từ storage firebase android
+    implementation 'com.google.firebase:firebase-storage:17.0.0'
 
 
 }

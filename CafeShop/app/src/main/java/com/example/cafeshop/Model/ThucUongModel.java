@@ -14,11 +14,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThucUongModel {
-    String hinhanh, tenthucuong, thanhphan,mathucuong;
+    String  tenthucuong, thanhphan,mathucuong;
     //Firebase không có kiểu int và mảng array
     long luotthich;
     double danhgia;
-    DatabaseReference nodeRoot; //node lớn nhất trong DB
+    List<String> hinhanh;
+    DatabaseReference nodeRoot; //tạo reference đến node lớn nhất trong DB
+
+    public List<String> getHinhanh() {
+        return hinhanh;
+    }
+
+    public void setHinhanh(List<String> hinhanh) {
+        this.hinhanh = hinhanh;
+    }
 
     public  ThucUongModel(){
         nodeRoot = FirebaseDatabase.getInstance().getReference();
@@ -38,13 +47,6 @@ public class ThucUongModel {
 
     public void setDanhgia(double danhgia) {
         this.danhgia = danhgia;
-    }
-    public String getHinhanh() {
-        return hinhanh;
-    }
-
-    public void setHinhanh(String hinhanh) {
-        this.hinhanh = hinhanh;
     }
 
     public String getTenthucuong() {
@@ -89,9 +91,20 @@ public class ThucUongModel {
 //                thucUongModelList.add(thucUongModel);
                 //đụng key động => duyệt key:
                 for (DataSnapshot valueThucUong:dataSnapshotThucUong.getChildren()){
-                    ThucUongModel thucUongModel = valueThucUong.getValue(ThucUongModel.class);
+                    ThucUongModel thucUongModel = valueThucUong.getValue(ThucUongModel.class); //lấy 1 quán ăn
                     //Log.d("ktduyetthucuong",thucUongModel.getTenthucuong());
+                    thucUongModel.setMathucuong(valueThucUong.getKey());
 
+                    DataSnapshot dataSnapshotHinhThucUong = dataSnapshot.child("hinhthucuong").child(valueThucUong.getKey()); //getket lấy mã thức uống
+                    List<String> hinhanhList = new ArrayList<>(); //mỗi quán ăn có 1 list hình ảnh, duyệt for lấy hình ảnh lưu vào list của mỗi thức uống
+//                    Log.d("ktHinhThucUong",dataSnapshotHinhThucUong + "");
+                    //Duyệt key hình ảnh thức uống:
+                        for(DataSnapshot valueHinhThucUong :dataSnapshotHinhThucUong.getChildren()){
+//                            Log.d("ktHinhThucUong",valueHinhThucUong + "");
+                              hinhanhList.add(valueHinhThucUong.getValue(String.class));
+                        }
+
+                    thucUongModel.setHinhanh(hinhanhList);
                     thucUongInterface.getDanhSachThucUongModel(thucUongModel);
                 }
             }
