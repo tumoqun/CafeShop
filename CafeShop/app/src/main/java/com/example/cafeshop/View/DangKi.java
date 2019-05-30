@@ -10,11 +10,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.cafeshop.Controller.DangKyController;
+import com.example.cafeshop.Model.ThanhVienModel;
 import com.example.cafeshop.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.UUID;
 
 public class DangKi extends AppCompatActivity {
     EditText edtEmail;
@@ -23,7 +27,7 @@ public class DangKi extends AppCompatActivity {
     Button btnDangKy;
     FirebaseAuth auth;
     Intent recv;
-
+    DangKyController dangKyController;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +43,7 @@ public class DangKi extends AppCompatActivity {
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = edtEmail.getText().toString().trim();
+                final String email = edtEmail.getText().toString().trim();
                 String password = edtPassword.getText().toString().trim();
                 String edtpassword = edtRetypePassword.getText().toString().trim();
 
@@ -70,13 +74,22 @@ public class DangKi extends AppCompatActivity {
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(DangKi.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(Task<AuthResult> task) {
-                        Toast.makeText(DangKi.this, "Đăng kí thành công!", Toast.LENGTH_SHORT).show();
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Toast.makeText(DangKi.this, "Email không hợp lệ!", Toast.LENGTH_SHORT).show();
                         } else {
+                            ThanhVienModel thanhVienModel=new ThanhVienModel();
+                            thanhVienModel.setUsername("Anonymous");
+                            thanhVienModel.setHoten("[Chưa cập nhật]");
+                            thanhVienModel.setEmail(email);
+                            thanhVienModel.setHinhanh("default_user.jpg");
+                            thanhVienModel.setDiachi("[Chưa cập nhật]");
+                            thanhVienModel.setSdt("[Chưa cập nhật]");
+                            dangKyController=new DangKyController();
+                            dangKyController.ThemtThongtinThanhVienController(thanhVienModel,task.getResult().getUser().getUid());
+                            Toast.makeText(DangKi.this, "Đăng kí thành công!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(DangKi.this, DangNhap.class));
                             finish();
                         }

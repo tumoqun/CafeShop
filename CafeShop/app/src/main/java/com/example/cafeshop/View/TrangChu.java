@@ -3,12 +3,25 @@ package com.example.cafeshop.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
 
 import com.example.cafeshop.Adapters.AdapterViewPagerTrangChu;
 import com.example.cafeshop.R;
@@ -18,13 +31,31 @@ public class TrangChu  extends AppCompatActivity implements  ViewPager.OnPageCha
     RadioButton rbthucuong;
     RadioButton rbmonan;
     RadioGroup  rgmonanthucuong;
+    RecyclerView rcThucUong;
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    ImageView menu;
+
 
     ViewPager viewPagerTrangChu;
     public  void onCreate (@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trangchu);
         //recv=getIntent();
-
+        //bật navigation drawer
+        menu=findViewById(R.id.menu);
+        drawerLayout=findViewById(R.id.drawer_trangchu);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        //tương tác với các nút trên navigationview
+        navigationView=findViewById(R.id.nvTrangChu);
+        setupDrawerContent(navigationView);
+        //
         rbthucuong = findViewById(R.id.rbThucUong);
         rbmonan = findViewById(R.id.rbMonAn);
         rgmonanthucuong = findViewById(R.id.rgMonAnThucUong);
@@ -42,7 +73,43 @@ public class TrangChu  extends AppCompatActivity implements  ViewPager.OnPageCha
 
         //Lắng nghe sự kiện click cho Radio group
         rgmonanthucuong.setOnCheckedChangeListener( this);
+    }
 
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        selectDrawerItem(menuItem);
+                        return true;
+                    }
+                });
+
+    }
+
+    private void selectDrawerItem(MenuItem menuItem) {
+        Fragment fragment=null;
+        Class fragmentClass = null;
+        switch (menuItem.getItemId()){
+            case R.id.profile:
+                fragmentClass=Profile.class;
+                break;
+        }
+        try{
+            fragment=(Fragment)fragmentClass.newInstance();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.drawer_trangchu,fragment).commit();
+        // Highlight the selected item has been done by NavigationView
+        menuItem.setChecked(true);
+        // Set action bar title
+        setTitle(menuItem.getTitle());
+        // Close the navigation drawer
+        drawerLayout.closeDrawers();
     }
 
 

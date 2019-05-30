@@ -30,6 +30,7 @@ public class ControllerThucUong {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerViewThucUong.setLayoutManager(layoutManager);
         adapterRecyclerThucUong = new AdapterRecyclerThucUong(thucUongModelList, R.layout.layout_recyclerview_thucuong);
+        adapterRecyclerThucUong.getItemId(1);
         recyclerViewThucUong.setAdapter(adapterRecyclerThucUong);
         //new một interface để ThucUongModel sẽ nhận vô ThucUongInterface
         ThucUongInterface thucUongInterface = new ThucUongInterface() {
