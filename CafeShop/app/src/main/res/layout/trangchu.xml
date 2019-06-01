@@ -3,69 +3,391 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackGroundGrey">
-
-
+    android:background="@color/colorBackGroundGrey"
+    android:id="@+id/layouttrangchu">
 
 
     <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/holo_orange_dark">
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@android:color/holo_orange_dark">
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
 
-        <RadioGroup
-            android:id="@+id/rgMonAnThucUong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/rbThucUong"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/custom_radio_thucuong"
-                android:button="@android:color/transparent"
-                android:checked="true"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="Thức uống"
-                android:textColor="@drawable/change_textcolor_radiogroup"
-                android:textColorLink="@color/colorPrimary" />
+    <ImageView
+    android:id="@+id/imageView3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+    android:layout_gravity="left"/>
 
-            <RadioButton
-                android:id="@+id/rbMonAn"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/custom_radio_monan"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="Món ăn"
-                android:textColor="@drawable/change_textcolor_radiogroup" />
-        </RadioGroup>
+    <!--<View-->
+    <!--android:id="@+id/view3"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1"/>-->
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="CAFESHOP"
+    android:textSize="20sp"
+    android:textColor="@color/colorWhite"
+    android:layout_gravity="center"/>
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="right"
-            android:layout_marginRight="10dp"
-            app:srcCompat="@drawable/com_facebook_button_icon" />
+    <android.support.v7.widget.AppCompatImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/logowhitesesized"
+    android:layout_gravity="right"/>
+
+
+
+
     </android.support.v7.widget.Toolbar>
+
+
+
+
+    <RadioGroup
+        android:id="@+id/rgMonAnThucUong"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbThucUong"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/change_background_tab_orangelineunder"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Thức uống"
+            android:textColor="@drawable/change_textcolor_blacktororange" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackGroundGrey" />
+
+        <RadioButton
+            android:id="@+id/rbMonAn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/change_background_tab_orangelineunder"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Món ăn"
+            android:textColor="@drawable/change_textcolor_blacktororange" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackGroundGrey" />
+
+        <RadioButton
+            android:id="@+id/rbYeuThich"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/change_background_tab_orangelineunder"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Yêu thích"
+            android:textColor="@drawable/change_textcolor_blacktororange" />
+    </RadioGroup>
+
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_TrangChu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-    </android.support.v4.view.ViewPager>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGrey" />
+    <RadioGroup
+        android:id="@+id/rgBottomBarTrangChu"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rbTinTucTrangChu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_tintuc_string"
+            android:textColor="@drawable/change_textcolor_blacktororange" >
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/rbThucDonTrangChu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_thucdon_string"
+            android:textColor="@drawable/change_textcolor_blacktororange" />
+        <RadioButton
+            android:id="@+id/rbCuaHangTrangChu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_cuahang_string"
+            android:textColor="@drawable/change_textcolor_blacktororange" />
+        <RadioButton
+            android:id="@+id/rbTaiKhoanTrangChu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_taikhoan_string"
+            android:textColor="@drawable/change_textcolor_blacktororange" />
+    </RadioGroup>
+
+
 </LinearLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:orientation="vertical" android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@color/colorBackGroundGrey"-->
+    <!--android:id="@+id/trangchulayout">-->
+
+
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="@android:color/holo_orange_dark">-->
+
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView3"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:srcCompat="@android:drawable/ic_menu_sort_by_size" />-->
+
+        <!--<RadioGroup-->
+            <!--android:id="@+id/rg"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/a"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/custom_radio_thucuong"-->
+                <!--android:button="@android:color/transparent"-->
+                <!--android:checked="true"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="5dp"-->
+                <!--android:text="Thức uống"-->
+                <!--android:textColor="@drawable/change_textcolor_radiogroup"-->
+                <!--android:textColorLink="@color/colorPrimary" />-->
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/b"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/custom_radio_monan"-->
+                <!--android:button="@android:color/transparent"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="5dp"-->
+                <!--android:text="Món ăn"-->
+                <!--android:textColor="@drawable/change_textcolor_radiogroup" />-->
+        <!--</RadioGroup>-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView5"-->
+            <!--android:layout_width="24dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--app:srcCompat="@drawable/com_facebook_button_icon" />-->
+    <!--</android.support.v7.widget.Toolbar>-->
+
+    <!--<RadioGroup-->
+        <!--android:id="@+id/rgMonAnThucUong"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<RadioButton-->
+            <!--android:id="@+id/rbThucUong"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/change_background_tab_orangelineunder"-->
+            <!--android:button="@android:color/transparent"-->
+            <!--android:checked="true"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:text="Thức uống"-->
+            <!--android:textColor="@drawable/change_textcolor_blacktororange" />-->
+
+        <!--<View-->
+            <!--android:id="@+id/view"-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/colorBackGroundGrey" />-->
+
+        <!--<RadioButton-->
+            <!--android:id="@+id/rbMonAn"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/change_background_tab_orangelineunder"-->
+            <!--android:button="@android:color/transparent"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:text="Món ăn"-->
+            <!--android:textColor="@drawable/change_textcolor_blacktororange" />-->
+
+        <!--<View-->
+            <!--android:id="@+id/view2"-->
+            <!--android:layout_width="2dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorBackGroundGrey" />-->
+
+        <!--<RadioButton-->
+            <!--android:id="@+id/rbYeuThich"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/change_background_tab_orangelineunder"-->
+            <!--android:button="@android:color/transparent"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:text="Yêu thích"-->
+            <!--android:textColor="@drawable/change_textcolor_blacktororange" />-->
+    <!--</RadioGroup>-->
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/viewpager_TrangChu"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+    <!--</android.support.v4.view.ViewPager>-->
+<!--</LinearLayout>-->
+
+    <!--&lt;!&ndash;<?xml version="1.0" encoding="utf-8"?>&ndash;&gt;-->
+    <!--&lt;!&ndash;<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"&ndash;&gt;-->
+    <!--&lt;!&ndash;xmlns:app="http://schemas.android.com/apk/res-auto"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:orientation="vertical" android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:background="@color/colorBackGroundGrey">&ndash;&gt;-->
+
+
+
+
+    <!--&lt;!&ndash;<android.support.v7.widget.Toolbar&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="?attr/actionBarSize"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:background="@android:color/holo_orange_dark">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/imageView3"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:srcCompat="@android:drawable/ic_menu_sort_by_size" />&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<RadioGroup&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/rgMonAnThucUong"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:orientation="horizontal">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<RadioButton&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/rbThucUong"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:background="@drawable/custom_radio_thucuong"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:button="@android:color/transparent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:checked="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:padding="5dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:text="Thức uống"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:textColor="@drawable/change_textcolor_radiogroup"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:textColorLink="@color/colorPrimary" />&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<RadioButton&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/rbMonAn"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="80dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:background="@drawable/custom_radio_monan"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:button="@android:color/transparent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:padding="5dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:text="Món ăn"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:textColor="@drawable/change_textcolor_radiogroup" />&ndash;&gt;-->
+    <!--&lt;!&ndash;</RadioGroup>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/imageView5"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="24dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="24dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_gravity="right"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_marginRight="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:srcCompat="@drawable/com_facebook_button_icon" />&ndash;&gt;-->
+    <!--&lt;!&ndash;</android.support.v7.widget.Toolbar>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<android.support.v4.view.ViewPager&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/viewpager_TrangChu"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="match_parent">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</android.support.v4.view.ViewPager>&ndash;&gt;-->
+    <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->

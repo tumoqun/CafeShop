@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/layouttaikhoan">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:text="Trang tài khoản"
+    android:layout_weight="1"/>
 
+
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGrey" />
+    <RadioGroup
+        android:id="@+id/rgBottomBarTaiKhoan"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rbTinTucTaiKhoan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_tintuc_string"
+            android:textColor="@drawable/change_textcolor_blacktororange" >
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/rbThucDonTaiKhoan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_thucdon_string"
+            android:textColor="@drawable/change_textcolor_blacktororange" />
+        <RadioButton
+            android:id="@+id/rbCuaHangTaiKhoan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_cuahang_string"
+            android:textColor="@drawable/change_textcolor_blacktororange" />
+        <RadioButton
+            android:id="@+id/rbTaiKhoanTaiKhoan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_taikhoan_string"
+            android:textColor="@drawable/change_textcolor_blacktororange" />
+    </RadioGroup>
 </LinearLayout>

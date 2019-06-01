@@ -3,40 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackGroundGrey">
+    android:background="@color/colorBackGroundGrey"
+    android:id="@+id/layoutthucdon">
 
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarThucDon"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@android:color/holo_orange_dark">
 
 
+        <!--<Button-->
+            <!--android:id="@+id/btnBackThucDon"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@android:color/transparent"-->
+            <!--android:gravity="center|left"-->
+            <!--android:text="@string/icon_back1"-->
+            <!--android:textColor="@drawable/change_textcolor_btn_blacktowhite"-->
+            <!--android:textSize="30sp" />-->
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/ic_menu_sort_by_size"
-                android:layout_gravity="left"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thực đơn"
+            android:textSize="17sp"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="left"
+            android:layout_marginLeft="30dp"/>
 
-            <!--<View-->
-                <!--android:id="@+id/view3"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="0dp"-->
-                <!--android:layout_weight="1"/>-->
-            <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            app:srcCompat="@drawable/logowhitesesized" />
-
-            <android.support.v7.widget.SearchView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right" />
+        <android.support.v7.widget.SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right" />
 
 
 
@@ -44,10 +45,8 @@
     </android.support.v7.widget.Toolbar>
 
 
-
-
     <RadioGroup
-        android:id="@+id/rgMonAnThucUong"
+        android:id="@+id/rgThucDon"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@android:color/white"
@@ -55,7 +54,7 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/rbThucUong"
+            android:id="@+id/rbThucUongThucDon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -75,7 +74,7 @@
             android:background="@color/colorBackGroundGrey" />
 
         <RadioButton
-            android:id="@+id/rbMonAn"
+            android:id="@+id/rbMonAnThucDon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -94,7 +93,7 @@
             android:background="@color/colorBackGroundGrey" />
 
         <RadioButton
-            android:id="@+id/rbYeuThich"
+            android:id="@+id/rbYeuThichThucDon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -110,76 +109,78 @@
 
 
     <android.support.v4.view.ViewPager
-    android:id="@+id/viewpager_TrangChu"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"/>
-
-    <RadioGroup
+        android:id="@+id/viewpagerThucDon"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGrey" />
+    <RadioGroup
+        android:id="@+id/rgBottomBarThucDon"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
         android:background="@android:color/white"
         android:gravity="center"
         android:orientation="horizontal">
-
         <RadioButton
-            android:id="@+id/aa"
+            android:id="@+id/rbTinTucThucDon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/colorWhite"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
             android:button="@android:color/transparent"
             android:checked="false"
             android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/btn_home_string"
-            android:textColor="@drawable/change_textcolor_blacktororange" />
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_tintuc_string"
+            android:textColor="@drawable/change_textcolor_blacktororange" >
+        </RadioButton>
         <RadioButton
-            android:id="@+id/bb"
+            android:id="@+id/rbThucDonThucDon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/colorWhite"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
             android:button="@android:color/transparent"
             android:checked="true"
             android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/btn_home_string"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_thucdon_string"
             android:textColor="@drawable/change_textcolor_blacktororange" />
         <RadioButton
-            android:id="@+id/cc"
+            android:id="@+id/rbCuaHangThucDon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/colorWhite"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
             android:button="@android:color/transparent"
             android:checked="false"
             android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/btn_home_string"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_cuahang_string"
             android:textColor="@drawable/change_textcolor_blacktororange" />
         <RadioButton
-            android:id="@+id/đ"
+            android:id="@+id/rbTaiKhoanThucDon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/colorWhite"
+            android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
             android:button="@android:color/transparent"
             android:checked="false"
             android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/btn_home_string"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:text="@string/btn_taikhoan_string"
             android:textColor="@drawable/change_textcolor_blacktororange" />
-        <View
-            android:id="@+id/view6"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorBackGroundGrey" />
     </RadioGroup>
 
 
 </LinearLayout>
+

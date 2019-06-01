@@ -6,15 +6,18 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.cafeshop.View.Fragments.FragmentMonAn;
 import com.example.cafeshop.View.Fragments.FragmentThucUong;
+import com.example.cafeshop.View.Fragments.FragmentYeuThich;
 
 public class AdapterViewPagerTrangChu extends FragmentStatePagerAdapter {
     FragmentMonAn fmMonAn;
     FragmentThucUong fmThucUong;
+    FragmentYeuThich fmYeuThich;
 
     public AdapterViewPagerTrangChu(FragmentManager fm) {
         super(fm);
         fmMonAn=new FragmentMonAn();
         fmThucUong = new FragmentThucUong();
+        fmYeuThich = new FragmentYeuThich();
     }
 
     @Override
@@ -24,6 +27,8 @@ public class AdapterViewPagerTrangChu extends FragmentStatePagerAdapter {
                 return fmThucUong;
             case 1:
                 return  fmMonAn;
+            case 2:
+                return  fmYeuThich;
 
             default: return null ;
         }
@@ -32,6 +37,6 @@ public class AdapterViewPagerTrangChu extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 2; // đếm có 2 item: fmMonAn va fmThucUong, khi chạy vào sẽ chạy getCount trước để đếm có bao nhiêu vị trí
+        return 3; // đếm có 3 item: fmMonAn,fmYeuThich va fmThucUong, khi chạy vào sẽ chạy getCount trước để đếm có bao nhiêu vị trí
     }
 }

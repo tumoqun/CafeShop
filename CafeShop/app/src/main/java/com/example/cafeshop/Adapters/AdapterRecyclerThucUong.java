@@ -36,11 +36,9 @@ public class AdapterRecyclerThucUong extends RecyclerView.Adapter<AdapterRecycle
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtTenThucUong;
         ImageView imgThucUong;
-        ImageButton btnGioHang;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTenThucUong=(TextView) itemView.findViewById(R.id.txtTenThucUong);
-            btnGioHang=(ImageButton) itemView.findViewById(R.id.btnGioHang);
             imgThucUong=(ImageView) itemView.findViewById(R.id.imgThucUong);
         }
     }
@@ -60,18 +58,8 @@ public class AdapterRecyclerThucUong extends RecyclerView.Adapter<AdapterRecycle
         ThucUongModel thucUongModel=thucUongModelList.get(i);
         viewHolder.txtTenThucUong.setText(thucUongModel.getTenthucuong());
     //Kt quán ăn có hình không? Nếu như có hình thì download từ storage/hinhthucuong, phải implement storage từ Firebase
-        if(thucUongModel.getHinhanh().size()>0){
-            StorageReference storageHinhAnh = FirebaseStorage.getInstance().getReference().child("hinhanh").child(thucUongModel.getHinhanh().get(0));//Lấy hình ảnh vị trí 0 (get(0)) trong list hình ảnh của 1 thức uống
-            //Thực hiện download
-            long ONE_MEGABYTE = 1024 * 1024;
-            storageHinhAnh.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    //chuyển kiểu byte về bitmap:
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                    viewHolder.imgThucUong.setImageBitmap(bitmap);
-                }
-            });
+        if(thucUongModel.getBitmapList().size()>0){
+            viewHolder.imgThucUong.setImageBitmap(thucUongModel.getBitmapList().get(0));
         }
     }
 

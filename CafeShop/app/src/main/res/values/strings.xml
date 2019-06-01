@@ -1,4 +1,48 @@
 <resources>
     <string name="app_name">CafeShop</string>
     <string name="facebook_app_id">684764978607721</string>
+
+    <string name="icon_tintuc">&#xf1ea;</string>
+    <string name="icon_home">&#xf015;</string>
+    <string name="icon_list">&#xf03a;</string>
+    <string name="icon_cuahang">&#xf494;</string>
+    <string name="icon_moto">&#xf21c;</string>
+    <string name="icon_search">&#xf002;</string>
+    <string name="icon_cart_plus">&#xf217;</string>
+    <string name="icon_onlyplus">&#xf067;</string>
+    <string name="icon_pluscircle">&#xf055;</string>
+    <string name="icon_user_circle">&#xf2bd;</string>
+    <string name="icon_user">&#xf007;</string>
+    <string name="icon_useredit">&#xf4ff;</string>
+    <string name="icon_cart">&#xf07a;</string>
+    <string name="icon_alignleft">&#xf036;</string>
+    <string name="icon_back1">&#xf104;</string>
+
+
+
+
+    <string name="btn_home_string">&#xf015; "\n" Trang chủ</string>
+
+
+    <string name="btn_thucdon_string">
+        <font size="20">&#xf03a;</font> "\n" <font size="11"> Thực đơn</font>
+    </string>
+
+    <string name="btn_tintuc_string">
+        <font size="20">&#xf1ea;</font> "\n" <font size="11"> Tin tức</font>
+    </string>
+
+    <string name="btn_cuahang_string">
+        <font size="20">&#xf015;</font> "\n" <font size="11"> Cửa hàng</font>
+    </string>
+
+    <string name="btn_taikhoan_string">
+        <font size="20">&#xf007;</font> "\n" <font size="11"> Tài khoản</font>
+    </string>
+
 </resources>
+
+
+<!--get fontawesome: -->
+<!--lên https://fontawesome.com/cheatsheet?from=io lấy mã của font awesome thêm "&#x + mã"-->
+<!--<string name="fa_icon_linechart">&#xf201;</string>-->

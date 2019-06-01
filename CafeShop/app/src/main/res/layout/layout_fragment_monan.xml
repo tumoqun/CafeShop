@@ -8,65 +8,65 @@
 
 
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@android:color/white"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <!--<RadioGroup-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="horizontal">-->
 
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/change_background_tab_orangelineunder"
-            android:button="@android:color/transparent"
-            android:checked="true"
-            android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="RadioButton"
-            android:textColor="@drawable/change_textcolor_blacktororange" />
+        <!--<RadioButton-->
+            <!--android:id="@+id/radioButton2"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/change_background_tab_orangelineunder"-->
+            <!--android:button="@android:color/transparent"-->
+            <!--android:checked="true"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:text="RadioButton"-->
+            <!--android:textColor="@drawable/change_textcolor_blacktororange" />-->
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorBackGroundGrey" />
+        <!--<View-->
+            <!--android:id="@+id/view"-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/colorBackGroundGrey" />-->
 
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/change_background_tab_orangelineunder"
-            android:button="@android:color/transparent"
-            android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="RadioButton"
-            android:textColor="@drawable/change_textcolor_blacktororange" />
+        <!--<RadioButton-->
+            <!--android:id="@+id/radioButton"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/change_background_tab_orangelineunder"-->
+            <!--android:button="@android:color/transparent"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:text="RadioButton"-->
+            <!--android:textColor="@drawable/change_textcolor_blacktororange" />-->
 
-        <View
-            android:id="@+id/view2"
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorBackGroundGrey" />
+        <!--<View-->
+            <!--android:id="@+id/view2"-->
+            <!--android:layout_width="2dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorBackGroundGrey" />-->
 
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/change_background_tab_orangelineunder"
-            android:button="@android:color/transparent"
-            android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="RadioButton"
-            android:textColor="@drawable/change_textcolor_blacktororange" />
-    </RadioGroup>
+        <!--<RadioButton-->
+            <!--android:id="@+id/radioButton3"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/change_background_tab_orangelineunder"-->
+            <!--android:button="@android:color/transparent"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:text="RadioButton"-->
+            <!--android:textColor="@drawable/change_textcolor_blacktororange" />-->
+    <!--</RadioGroup>-->
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
