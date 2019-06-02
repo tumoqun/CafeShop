@@ -68,10 +68,16 @@
                 app:srcCompat="@drawable/com_facebook_button_icon" />
         </android.support.v7.widget.Toolbar>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager_TrangChu"
+        <FrameLayout
+            android:id="@+id/viewpager_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager_TrangChu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
     </LinearLayout>
 
     <android.support.design.widget.NavigationView

@@ -36,7 +36,7 @@ public class TrangChu  extends AppCompatActivity implements  ViewPager.OnPageCha
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ImageView menu;
-
+    ImageView navigation_avartar;
 
     ViewPager viewPagerTrangChu;
     public  void onCreate (@Nullable Bundle savedInstanceState){
@@ -56,6 +56,10 @@ public class TrangChu  extends AppCompatActivity implements  ViewPager.OnPageCha
         navigationView=findViewById(R.id.nvTrangChu);
         setupDrawerContent(navigationView);
         //
+
+        //setup navigation header theo thông tin user
+        navigation_avartar=findViewById(R.id.navigation_avartar);
+
         rbthucuong = findViewById(R.id.rbThucUong);
         rbmonan = findViewById(R.id.rbMonAn);
         rgmonanthucuong = findViewById(R.id.rgMonAnThucUong);
@@ -88,23 +92,15 @@ public class TrangChu  extends AppCompatActivity implements  ViewPager.OnPageCha
     }
 
     private void selectDrawerItem(MenuItem menuItem) {
-        Fragment fragment=null;
-        Class fragmentClass = null;
         switch (menuItem.getItemId()){
             case R.id.profile:
-                fragmentClass=Profile.class;
+                getSupportFragmentManager().beginTransaction().replace(R.id.viewpager_layout,new Profile()).addToBackStack(null).commit();
+                break;
+            case R.id.home:
+                Intent iTrangChu=new Intent(this, TrangChu.class);
+                startActivity(iTrangChu);
                 break;
         }
-        try{
-            fragment=(Fragment)fragmentClass.newInstance();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        }
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.drawer_trangchu,fragment).commit();
-        // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);
         // Set action bar title
         setTitle(menuItem.getTitle());

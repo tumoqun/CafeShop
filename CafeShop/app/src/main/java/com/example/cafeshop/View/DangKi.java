@@ -39,7 +39,6 @@ public class DangKi extends AppCompatActivity {
         edtEmail = findViewById(R.id.Email_DangKy);
         edtPassword = findViewById(R.id.Password_DangKy);
         edtRetypePassword = findViewById(R.id.RetypePassword);
-
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
