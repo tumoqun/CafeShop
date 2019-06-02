@@ -36,9 +36,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.example.cafeshop.Controller.ControllerThucUong;
+import com.example.cafeshop.Controller.ControllerMonAn;
 import com.example.cafeshop.FontManager;
-import com.example.cafeshop.Model.ThucUongModel;
 import com.example.cafeshop.R;
 
 import java.util.List;
@@ -46,25 +45,24 @@ import java.util.List;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class FragmentMonAn extends Fragment {
-    //    ThucUongModel thucUongModel;
-    ControllerThucUong controllerThucUong;
-    RecyclerView recyclerThucUong;
-    ProgressBar pbThucUong;
-    NestedScrollView nestedScrollViewThucUong;
+    ControllerMonAn controllerMonAn;
+    RecyclerView recyclerMonAn;
+    ProgressBar pbMonAn;
+    NestedScrollView nestedScrollViewMonAn;
 
-    Typeface iconFontItemThucUong;
+    Typeface iconFontItemMonAn;
 
     //Khởi tạo giao diện cho Fragment
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.layout_fragment_thucuong,container, false); //attachToRoot: có gắn vô ai không
-        recyclerThucUong=(RecyclerView) view.findViewById(R.id.recyclerThucUong);
-        pbThucUong=view.findViewById(R.id.pbThucUong);
-        nestedScrollViewThucUong = view.findViewById(R.id.nestedScrollViewThucUong);
+        View view=inflater.inflate(R.layout.layout_fragment_monan,container, false); //attachToRoot: có gắn vô ai không
+        recyclerMonAn=(RecyclerView) view.findViewById(R.id.recyclerMonAn);
+        pbMonAn=view.findViewById(R.id.pbMonAn);
+        nestedScrollViewMonAn = view.findViewById(R.id.nestedScrollViewMonAn);
 
-        iconFontItemThucUong = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
-        FontManager.markAsIconContainer(view.findViewById(R.id.recyclerThucUong), iconFontItemThucUong);
+        iconFontItemMonAn = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
+        FontManager.markAsIconContainer(view.findViewById(R.id.recyclerMonAn), iconFontItemMonAn);
 
         return view;
     }
@@ -72,11 +70,11 @@ public class FragmentMonAn extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-//        thucUongModel = new ThucUongModel();
-////        List<ThucUongModel>thucUongModelList= thucUongModel.getDanhSachThucUong();
-////        Log.d("KTList",thucUongModelList.size() + " ");
-//        thucUongModel.getDanhSachThucUong();
-        controllerThucUong=new ControllerThucUong(getContext());
-        controllerThucUong.getDanhSachThucUongController(nestedScrollViewThucUong, recyclerThucUong,pbThucUong);
+//        monAnModel = new MonAnModel();
+////        List<MonAnModel>monAnModelList= monAnModel.getDanhSachMonAn();
+////        Log.d("KTList",monAnModelList.size() + " ");
+//        monAnModel.getDanhSachMonAn();
+        controllerMonAn=new ControllerMonAn(getContext());
+        controllerMonAn.getDanhSachMonAnController(nestedScrollViewMonAn, recyclerMonAn,pbMonAn);
     }
 }

@@ -4,89 +4,81 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cafeshop.FontManager;
 import com.example.cafeshop.R;
+import com.example.cafeshop.View.Fragments.FragmentTinTuc;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
-
-public class TaiKhoan  extends AppCompatActivity implements  RadioGroup.OnCheckedChangeListener {
-
+public class TinTuc  extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     Typeface iconFont;
-    RadioGroup rgbottombartaikhoan;
+    RadioGroup rgbottombartintuc;
     RadioButton rbtintuc;
     RadioButton rbthucdon;
     RadioButton rbcuahang;
     RadioButton rbtaikhoan;
-    LinearLayout layouttaikhoan;
+    LinearLayout layouttintuc;
+    FrameLayout frametintuc;
+
 
     public  void onCreate (@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.taikhoan);
+        setContentView(R.layout.trangchu);
         //recv=getIntent();
 
         //sử dụng font awesome:
         iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
-        FontManager.markAsIconContainer(findViewById(R.id.layouttaikhoan), iconFont);
+        FontManager.markAsIconContainer(findViewById(R.id.layouttintuc), iconFont);
 
-        rgbottombartaikhoan=findViewById(R.id.rgBottomBarTaiKhoan);
-        layouttaikhoan=findViewById(R.id.layouttaikhoan);
-        rbtintuc=findViewById(R.id.rbTinTucTaiKhoan);
-        rbthucdon=findViewById(R.id.rbThucDonTaiKhoan);
-        rbcuahang=findViewById(R.id.rbCuaHangTaiKhoan);
-        rbtaikhoan=findViewById(R.id.rbTaiKhoanTaiKhoan);
+        rgbottombartintuc=findViewById(R.id.rgBottomBarTinTuc);
+        layouttintuc=findViewById(R.id.layouttintuc);
+        rbtintuc=findViewById(R.id.rbTinTucTinTuc);
+        rbthucdon=findViewById(R.id.rbThucDonTinTuc);
+        rbcuahang=findViewById(R.id.rbCuaHangTinTuc);
+        rbtaikhoan=findViewById(R.id.rbTaiKhoanTinTuc);
+        frametintuc=findViewById(R.id.frameTinTuc);
 
-        //Lắng nghe sự kiện click cho bottom bar
-        rgbottombartaikhoan.setOnCheckedChangeListener(this);
+        rgbottombartintuc.setOnCheckedChangeListener(this);
 
-
-//        //Lắng nghe sự kiện click BackButton
-//        Button btnbackdscuahang = findViewById(R.id.btnBackDSCuaHang);
-//        btnbackdscuahang.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
-
+        FragmentTinTuc fragmentTinTuc=new FragmentTinTuc();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.frameTinTuc, fragmentTinTuc);
+        fragmentTransaction.commit();
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId)
         {
-            case  R.id.rbTinTucTaiKhoan:
+            case  R.id.rbTinTucTinTuc:
 //                Toast.makeText(getApplicationContext(), "Đã chọn tin tức", Toast.LENGTH_SHORT).show();
-                Intent iTinTuc = new Intent(this, TinTuc.class);
-                startActivity(iTinTuc);
-                this.overridePendingTransition(0, 0); // bỏ hiệu ứng giật giật khi chuyển activity
+                rbtintuc.setChecked(true);
                 break;
-            case  R.id.rbThucDonTaiKhoan:
+
+            case  R.id.rbThucDonTinTuc:
 //                Toast.makeText(getApplicationContext(), "Đã chọn thực đơn", Toast.LENGTH_SHORT).show();
                 Intent iThucDon=new Intent(this, ThucDon.class);
                 startActivity(iThucDon);
                 this.overridePendingTransition(0, 0); // bỏ hiệu ứng giật giật khi chuyển activity
                 break;
-            case  R.id.rbCuaHangTaiKhoan:
-                rbcuahang.setChecked(true);
+            case  R.id.rbCuaHangTinTuc:
 //                Toast.makeText(getApplicationContext(), "Đã chọn cửa hàng", Toast.LENGTH_SHORT).show();
                 Intent iCuaHang = new Intent(this, DSCuaHang.class);
                 startActivity(iCuaHang);
                 this.overridePendingTransition(0, 0); // bỏ hiệu ứng giật giật khi chuyển activity
                 break;
-            case  R.id.rbTaiKhoanTaiKhoan:
-                rbtaikhoan.setChecked(true);
+            case  R.id.rbTaiKhoanTinTuc:
 //                Toast.makeText(getApplicationContext(), "Đã chọn tài khoản", Toast.LENGTH_SHORT).show();
+                Intent iTaiKhoan=new Intent(this, TaiKhoan.class);
+                startActivity(iTaiKhoan);
+                this.overridePendingTransition(0, 0); // bỏ hiệu ứng giật giật khi chuyển activity
                 break;
         }
     }
@@ -94,6 +86,6 @@ public class TaiKhoan  extends AppCompatActivity implements  RadioGroup.OnChecke
     @Override
     protected void onResume() {
         super.onResume();
-        onCheckedChanged(rgbottombartaikhoan,R.id.rbTaiKhoanTaiKhoan);
+        onCheckedChanged(rgbottombartintuc,R.id.rbTinTucTinTuc);
     }
 }

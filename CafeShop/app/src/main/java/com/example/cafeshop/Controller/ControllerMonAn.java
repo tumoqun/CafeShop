@@ -12,9 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.example.cafeshop.Adapters.AdapterRecyclerThucUong;
-import com.example.cafeshop.Controller.Interface.ThucUongInterface;
-import com.example.cafeshop.Model.ThucUongModel;
+import com.example.cafeshop.Adapters.AdapterRecyclerMonAn;
+import com.example.cafeshop.Controller.Interface.MonAnInterface;
+import com.example.cafeshop.Model.MonAnModel;
 import com.example.cafeshop.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -23,53 +23,40 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ControllerThucUong {
+public class ControllerMonAn {
     Context context;
-    ThucUongModel thucUongModel;
-    AdapterRecyclerThucUong adapterRecyclerThucUong;
+    MonAnModel monAnModel;
+    AdapterRecyclerMonAn adapterRecyclerMonAn;
     int itemdaload=8;
 
 
 
-    public  ControllerThucUong(Context context){
+    public  ControllerMonAn(Context context){
         this.context=context;
-        thucUongModel = new ThucUongModel();
+        monAnModel = new MonAnModel();
     }
 
     //controller nhận recycler view của fragment truyền qua
-    public  void getDanhSachThucUongController(NestedScrollView nestedScrollViewThucUong, RecyclerView recyclerViewThucUong, final ProgressBar progressBar){
+    public  void getDanhSachMonAnController(NestedScrollView nestedScrollViewMonAn, RecyclerView recyclerViewMonAn, final ProgressBar progressBar){
 
-       final List<ThucUongModel> thucUongModelList = new ArrayList<>();
+        final List<MonAnModel> monAnModelList = new ArrayList<>();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-        recyclerViewThucUong.setLayoutManager(layoutManager);
-        adapterRecyclerThucUong = new AdapterRecyclerThucUong(thucUongModelList, R.layout.layout_recyclerview_thucuong);
+        recyclerViewMonAn.setLayoutManager(layoutManager);
+        adapterRecyclerMonAn = new AdapterRecyclerMonAn(monAnModelList, R.layout.layout_recyclerview_monan);
 
-        //GridLayoutManager gridLayoutManager = new GridLayoutManager(context,2);
-       // gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // set Horizontal Orientation
-        //recyclerViewThucUong.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
-
-        recyclerViewThucUong.setAdapter(adapterRecyclerThucUong);
-        recyclerViewThucUong.setLayoutManager(new GridLayoutManager(context,2));
-        //new một interface để ThucUongModel sẽ nhận vô ThucUongInterface
+        recyclerViewMonAn.setAdapter(adapterRecyclerMonAn);
+        recyclerViewMonAn.setLayoutManager(new GridLayoutManager(context,2));
+        //new một interface để MonAnModel sẽ nhận vô MonAnInterface
 
         ////Kiểm tra nestedScrollView có tới tận cùng của item đã load chưa
 
-//        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
 
-//        if(itemdaload!=thucUongModelList.size()){
-//            progressBar.setVisibility(View.VISIBLE);
-//        }
-
-        final ThucUongInterface thucUongInterface = new ThucUongInterface() {
+        final MonAnInterface monAnInterface = new MonAnInterface() {
             @Override
-            public void getDanhSachThucUongModel(final ThucUongModel thucUongModel) {
-                //Log.d("ktNodeThucUong",thucUongModel.getTenthucuong() +"");
-                if(itemdaload!=thucUongModelList.size()){
-                    progressBar.setVisibility(View.VISIBLE);
-                }
-
+            public void getDanhSachMonAnModel(final MonAnModel monAnModel) {
                 final List<Bitmap> bitmaps= new ArrayList<>();
-                for(String linkhinh: thucUongModel.getHinhanh()){
+                for(String linkhinh: monAnModel.getHinhanhmonan()){
                     StorageReference storageHinhAnh = FirebaseStorage.getInstance().getReference().child("hinhanh").child(linkhinh);//Lấy hình ảnh vị trí 0 (get(0)) trong list hình ảnh của 1 thức uống
                     //Thực hiện download
                     long ONE_MEGABYTE = 1024 * 1024;
@@ -79,11 +66,11 @@ public class ControllerThucUong {
                             //chuyển kiểu byte về bitmap:
                             Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
                             bitmaps.add(bitmap);
-                            thucUongModel.setBitmapList(bitmaps);
+                            monAnModel.setBitmapList(bitmaps);
 
-                            if(thucUongModel.getBitmapList().size() == thucUongModel.getHinhanh().size()){
-                                thucUongModelList.add(thucUongModel);
-                                adapterRecyclerThucUong.notifyDataSetChanged();
+                            if(monAnModel.getBitmapList().size() == monAnModel.getHinhanhmonan().size()){
+                                monAnModelList.add(monAnModel);
+                                adapterRecyclerMonAn.notifyDataSetChanged();
                                 progressBar.setVisibility(View.GONE);
                             }
                         }
@@ -95,7 +82,7 @@ public class ControllerThucUong {
         };
 
         //lắng nghe sự kiện scroll của nested scrollview
-        nestedScrollViewThucUong.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+        nestedScrollViewMonAn.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView nsv, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if (nsv.getChildAt(nsv.getChildCount() -1) !=null) //kiểm tra vị trí 0 có khác null k, nếu có con:
@@ -103,12 +90,13 @@ public class ControllerThucUong {
                     //kiểm tra scrollY có >= chiều cao của tất cả những con đang nằm trong nó lkhông
                     if(scrollY >= (nsv.getChildAt(nsv.getChildCount()-1)).getMeasuredHeight()- nsv.getMeasuredHeight()){
                         itemdaload +=8;
-                        thucUongModel.getDanhSachThucUong(thucUongInterface,itemdaload,itemdaload-8);
-
+                        monAnModel.getDanhSachMonAn(monAnInterface,itemdaload,itemdaload-8);
                     }
                 }
             }
         });
-        thucUongModel.getDanhSachThucUong(thucUongInterface,itemdaload,0);
+
+
+        monAnModel.getDanhSachMonAn(monAnInterface,itemdaload,0);
     }
 }

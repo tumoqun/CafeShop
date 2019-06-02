@@ -91,8 +91,8 @@ public class DangNhap extends AppCompatActivity implements View.OnClickListener,
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(DangNhap.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-                    Intent iTrangChu=new Intent(DangNhap.this, TrangChu.class);
-                    startActivity(iTrangChu);
+                    Intent iTinTuc=new Intent(DangNhap.this, TinTuc.class);
+                    startActivity(iTinTuc);
                 }
                 else {
                     Toast.makeText(DangNhap.this,"Sai tên tài khoản hoặc mật khẩu",Toast.LENGTH_SHORT).show();

@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cafeshop.Adapters.AdapterViewPagerDSCuaHang;
-import com.example.cafeshop.Adapters.AdapterViewPagerTrangChu;
+//import com.example.cafeshop.Adapters.AdapterViewPagerTinTuc;
 import com.example.cafeshop.FontManager;
 import com.example.cafeshop.R;
 
@@ -58,11 +58,11 @@ public class DSCuaHang  extends AppCompatActivity implements  ViewPager.OnPageCh
         rgtatcagantoi = findViewById(R.id.rgTatCaGanToi);
 
 
-        //Tìm viewpagerTrangChu ở trang chủ gán vào viewPagerTrangChu
+        //Tìm viewpagerTinTuc ở trang chủ gán vào viewPagerTinTuc
         viewpagerdscuahang=(ViewPager)findViewById(R.id.viewpagerDSCuaHang);
         //Khởi tạo adapter hiển thị fragment cho viewpager
         AdapterViewPagerDSCuaHang adapterViewPagerDSCuaHang = new AdapterViewPagerDSCuaHang((getSupportFragmentManager()));
-        //Gắn adapter vào viewPagerTrangChu vừa khai báo.
+        //Gắn adapter vào viewPagerTinTuc vừa khai báo.
         viewpagerdscuahang.setAdapter(adapterViewPagerDSCuaHang);
 
         //Lắng nghe sự kiện thay đổi page cho ViewPager
@@ -125,24 +125,24 @@ public class DSCuaHang  extends AppCompatActivity implements  ViewPager.OnPageCh
                 break;
 
             case  R.id.rbTinTucDSCuaHang:
-                Toast.makeText(getApplicationContext(), "Đã chọn tin tức", Toast.LENGTH_SHORT).show();
-                Intent iTrangChu = new Intent(this, TrangChu.class);
-                startActivity(iTrangChu);
+//                Toast.makeText(getApplicationContext(), "Đã chọn tin tức", Toast.LENGTH_SHORT).show();
+                Intent iTinTuc = new Intent(this, TinTuc.class);
+                startActivity(iTinTuc);
                 this.overridePendingTransition(0, 0); // bỏ hiệu ứng giật giật khi chuyển activity
                 break;
 
             case  R.id.rbThucDonDSCuaHang:
-                Toast.makeText(getApplicationContext(), "Đã chọn thực đơn", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Đã chọn thực đơn", Toast.LENGTH_SHORT).show();
                 Intent iThucDon=new Intent(this, ThucDon.class);
                 startActivity(iThucDon);
                 this.overridePendingTransition(0, 0); // bỏ hiệu ứng giật giật khi chuyển activity
                 break;
             case  R.id.rbCuaHangDSCuaHang:
                 rbcuahang.setChecked(true);
-                Toast.makeText(getApplicationContext(), "Đã chọn cửa hàng", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Đã chọn cửa hàng", Toast.LENGTH_SHORT).show();
                 break;
             case  R.id.rbTaiKhoanDSCuaHang:
-                Toast.makeText(getApplicationContext(), "Đã chọn tài khoản", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Đã chọn tài khoản", Toast.LENGTH_SHORT).show();
                 Intent iTaiKhoan=new Intent(this, TaiKhoan.class);
                 startActivity(iTaiKhoan);
                 this.overridePendingTransition(0, 0); // bỏ hiệu ứng giật giật khi chuyển activity

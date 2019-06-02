@@ -26,6 +26,7 @@
         >
 
         <TextView
+            android:id="@+id/txtDanhGiaThucUong"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/circle_shape_green"
@@ -66,8 +67,10 @@
         android:layout_height="30dp"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/txtGiaThucUong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="30.000đ"

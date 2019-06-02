@@ -18,10 +18,20 @@ public class ThucUongModel {
     String  tenthucuong, thanhphan,mathucuong;
     //Firebase không có kiểu int và mảng array
     long luotthich;
+    long giatien;
     double danhgia;
     List<String> hinhanh;
     DatabaseReference nodeRoot; //tạo reference đến node lớn nhất trong DB
     List<Bitmap> bitmapList;
+
+    public long getGiatien() {
+        return giatien;
+    }
+
+    public void setGiatien(long giatien) {
+        this.giatien = giatien;
+    }
+
     public List<Bitmap> getBitmapList() {
         return bitmapList;
     }

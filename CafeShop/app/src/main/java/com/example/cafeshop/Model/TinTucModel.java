@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.cafeshop.Controller.Interface.MonAnInterface;
+import com.example.cafeshop.Controller.Interface.TinTucInterface;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -14,61 +14,43 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonAnModel {
-    String  tenmonan,mamonan;
+public class TinTucModel {
+    String  tieude,noidung,matintuc;
     //Firebase không có kiểu int và mảng array
-    long luotthich,giatien;
-    double danhgia;
-    List<String> hinhanhmonan;
+    List<String> hinhanhtintuc;
     DatabaseReference nodeRoot; //tạo reference đến node lớn nhất trong DB
     List<Bitmap> bitmapList;
 
-    public String getTenmonan() {
-        return tenmonan;
+    public String getTieude() {
+        return tieude;
     }
 
-    public void setTenmonan(String tenmonan) {
-        this.tenmonan = tenmonan;
+    public void setTieude(String tieude) {
+        this.tieude = tieude;
     }
 
-    public String getMamonant() {
-        return mamonan;
+    public String getNoidung() {
+        return noidung;
     }
 
-    public void setMamonan(String mamonan) {
-        this.mamonan = mamonan;
+    public void setNoidung(String noidung) {
+        this.noidung = noidung;
     }
 
-    public long getLuotthich() {
-        return luotthich;
+    public String getMatintuc() {
+        return matintuc;
     }
 
-    public void setLuotthich(long luotthich) {
-        this.luotthich = luotthich;
+    public void setMatintuc(String matintuc) {
+        this.matintuc = matintuc;
     }
 
-    public long getGiatien() {
-        return giatien;
+    public List<String> getHinhanhtintuc() {
+        return hinhanhtintuc;
     }
 
-    public void setGiatien(long giatien) {
-        this.giatien = giatien;
-    }
-
-    public double getDanhgia() {
-        return danhgia;
-    }
-
-    public void setDanhgia(double danhgia) {
-        this.danhgia = danhgia;
-    }
-
-    public List<String> getHinhanhmonan() {
-        return hinhanhmonan;
-    }
-
-    public void setHinhanhmonan(List<String> hinhanhmonan) {
-        this.hinhanhmonan = hinhanhmonan;
+    public void setHinhanhtintuc(List<String> hinhanhtintuc) {
+        this.hinhanhtintuc = hinhanhtintuc;
     }
 
     public List<Bitmap> getBitmapList() {
@@ -80,45 +62,45 @@ public class MonAnModel {
     }
 
 
-    public  MonAnModel(){
+    public  TinTucModel(){
         nodeRoot = FirebaseDatabase.getInstance().getReference();
     }
 
 
     private  DataSnapshot dataRoot;
     //Cần lấy nhiều dữ liệu của nhiều bảng => lắng nghe node cha lớn nhất (root)
-    public  void getDanhSachMonAn(final MonAnInterface monAnInterface, final int itemtieptheo, final int itemdaload){
+    public  void getDanhSachTinTuc(final TinTucInterface tinTucInterface, final int itemtieptheo, final int itemdaload){
 //        tạo interface:
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 dataRoot=dataSnapshot;
-                layDanhSachMonAn(dataSnapshot,monAnInterface,itemtieptheo,itemdaload);
+                layDanhSachTinTuc(dataSnapshot,tinTucInterface,itemtieptheo,itemdaload);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         };
         if(dataRoot!=null){
-            layDanhSachMonAn(dataRoot,monAnInterface,itemtieptheo,itemdaload);
+            layDanhSachTinTuc(dataRoot,tinTucInterface,itemtieptheo,itemdaload);
         }else {
             nodeRoot.addListenerForSingleValueEvent((valueEventListener));
         }
 
     }
 
-    private  void   layDanhSachMonAn(DataSnapshot dataSnapshot, MonAnInterface monAnInterface, int itemtieptheo, int itemdaload)
+    private  void   layDanhSachTinTuc(DataSnapshot dataSnapshot, TinTucInterface tinTucInterface, int itemtieptheo, int itemdaload)
     //item tiếp theo = số item trước đó + 1 sl item nhỏ  (5) để download thêm
     //item đã load = số item trạng thái đã load bnhiêu cái
     //dataSnapshot = dataRoot
     {
         Log.d("ktdataRoot",dataSnapshot +"");
         //muốn đi vào bảng nào thì dataSnapshot.child("tên bảng");
-        //Log.d("ktdataRoot",dataSnapshot.child("monan") +"");
-        DataSnapshot dataSnapshotMonAn=dataSnapshot.child("monan");
+        //Log.d("ktdataRoot",dataSnapshot.child("tintuc") +"");
+        DataSnapshot dataSnapshotTinTuc=dataSnapshot.child("tintuc");
         //đụng key động => duyệt key: Lấy danh sách thức uống:
         int i = 0; //đếm xem load đến sp thứ mấy
-        for (DataSnapshot valueMonAn:dataSnapshotMonAn.getChildren()){
+        for (DataSnapshot valueTinTuc:dataSnapshotTinTuc.getChildren()){
 
             if(i==itemtieptheo){
                 break;
@@ -129,21 +111,17 @@ public class MonAnModel {
             }
             i++;
 
-            MonAnModel monAnModel = valueMonAn.getValue(MonAnModel.class); //lấy 1 món ăn
-            monAnModel.setMamonan(valueMonAn.getKey());
+            TinTucModel tinTucModel = valueTinTuc.getValue(TinTucModel.class); //lấy 1 món ăn
+            tinTucModel.setMatintuc(valueTinTuc.getKey());
 
-            DataSnapshot dataSnapshotHinhMonAn = dataSnapshot.child("hinhmonan").child(valueMonAn.getKey()); //getket lấy mã thức uống
+            DataSnapshot dataSnapshotHinhTinTuc = dataSnapshot.child("hinhtintuc").child(valueTinTuc.getKey()); //getket lấy mã thức uống
             List<String> hinhanhList = new ArrayList<>(); //mỗi quán ăn có 1 list hình ảnh, duyệt for lấy hình ảnh lưu vào list của mỗi thức uống
             //Duyệt key hình ảnh món ăn:
-            for(DataSnapshot valueHinhMonAn :dataSnapshotHinhMonAn.getChildren()){
-                hinhanhList.add(valueHinhMonAn.getValue(String.class));
+            for(DataSnapshot valueHinhTinTuc :dataSnapshotHinhTinTuc.getChildren()){
+                hinhanhList.add(valueHinhTinTuc.getValue(String.class));
             }
-            monAnModel.setHinhanhmonan(hinhanhList);
-            monAnInterface.getDanhSachMonAnModel(monAnModel);
+            tinTucModel.setHinhanhtintuc(hinhanhList);
+            tinTucInterface.getDanhSachTinTucModel(tinTucModel);
         }
     }
-
-
-
-
 }

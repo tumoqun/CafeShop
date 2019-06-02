@@ -36,10 +36,14 @@ public class AdapterRecyclerThucUong extends RecyclerView.Adapter<AdapterRecycle
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtTenThucUong;
         ImageView imgThucUong;
+        TextView txtDanhGia;
+        TextView txtGiaThucUong;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTenThucUong=(TextView) itemView.findViewById(R.id.txtTenThucUong);
             imgThucUong=(ImageView) itemView.findViewById(R.id.imgThucUong);
+            txtDanhGia=(TextView) itemView.findViewById(R.id.txtDanhGiaThucUong);
+            txtGiaThucUong=(TextView) itemView.findViewById(R.id.txtGiaThucUong);
         }
     }
 
@@ -54,9 +58,11 @@ public class AdapterRecyclerThucUong extends RecyclerView.Adapter<AdapterRecycle
 
     //Lấy đối tượng quán ăn là gọi ra
     @Override
-    public void onBindViewHolder(@NonNull final AdapterRecyclerThucUong.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
         ThucUongModel thucUongModel=thucUongModelList.get(i);
         viewHolder.txtTenThucUong.setText(thucUongModel.getTenthucuong());
+        viewHolder.txtDanhGia.setText(thucUongModel.getDanhgia() + "");
+        viewHolder.txtGiaThucUong.setText(thucUongModel.getGiatien() +"");
     //Kt quán ăn có hình không? Nếu như có hình thì download từ storage/hinhthucuong, phải implement storage từ Firebase
         if(thucUongModel.getBitmapList().size()>0){
             viewHolder.imgThucUong.setImageBitmap(thucUongModel.getBitmapList().get(0));

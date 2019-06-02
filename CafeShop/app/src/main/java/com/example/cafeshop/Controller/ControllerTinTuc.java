@@ -12,9 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.example.cafeshop.Adapters.AdapterRecyclerThucUong;
-import com.example.cafeshop.Controller.Interface.ThucUongInterface;
-import com.example.cafeshop.Model.ThucUongModel;
+import com.example.cafeshop.Adapters.AdapterRecyclerTinTuc;
+import com.example.cafeshop.Controller.Interface.TinTucInterface;
+import com.example.cafeshop.Model.TinTucModel;
 import com.example.cafeshop.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -23,53 +23,41 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ControllerThucUong {
+public class ControllerTinTuc {
     Context context;
-    ThucUongModel thucUongModel;
-    AdapterRecyclerThucUong adapterRecyclerThucUong;
+    TinTucModel tinTucModel;
+    AdapterRecyclerTinTuc adapterRecyclerTinTuc;
     int itemdaload=8;
 
 
 
-    public  ControllerThucUong(Context context){
+    public  ControllerTinTuc(Context context){
         this.context=context;
-        thucUongModel = new ThucUongModel();
+        tinTucModel = new TinTucModel();
     }
 
     //controller nhận recycler view của fragment truyền qua
-    public  void getDanhSachThucUongController(NestedScrollView nestedScrollViewThucUong, RecyclerView recyclerViewThucUong, final ProgressBar progressBar){
+    public  void getDanhSachTinTucController(NestedScrollView nestedScrollViewTinTuc, RecyclerView recyclerViewTinTuc, final ProgressBar progressBar){
 
-       final List<ThucUongModel> thucUongModelList = new ArrayList<>();
+        final List<TinTucModel> tinTucModelList = new ArrayList<>();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-        recyclerViewThucUong.setLayoutManager(layoutManager);
-        adapterRecyclerThucUong = new AdapterRecyclerThucUong(thucUongModelList, R.layout.layout_recyclerview_thucuong);
+        recyclerViewTinTuc.setLayoutManager(layoutManager);
+        adapterRecyclerTinTuc = new AdapterRecyclerTinTuc(tinTucModelList, R.layout.layout_recyclerview_tintuc);
+        recyclerViewTinTuc.setAdapter(adapterRecyclerTinTuc);//set adapter cho recycler
 
-        //GridLayoutManager gridLayoutManager = new GridLayoutManager(context,2);
-       // gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // set Horizontal Orientation
-        //recyclerViewThucUong.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
+        //Chia 2 column
+//        recyclerViewTinTuc.setLayoutManager(new GridLayoutManager(context,2));
 
-        recyclerViewThucUong.setAdapter(adapterRecyclerThucUong);
-        recyclerViewThucUong.setLayoutManager(new GridLayoutManager(context,2));
-        //new một interface để ThucUongModel sẽ nhận vô ThucUongInterface
 
         ////Kiểm tra nestedScrollView có tới tận cùng của item đã load chưa
 
-//        progressBar.setVisibility(View.VISIBLE);
-
-//        if(itemdaload!=thucUongModelList.size()){
-//            progressBar.setVisibility(View.VISIBLE);
-//        }
-
-        final ThucUongInterface thucUongInterface = new ThucUongInterface() {
+        progressBar.setVisibility(View.VISIBLE);
+        //new một interface để TinTucModel sẽ nhận vô TinTucInterface
+        final TinTucInterface tinTucInterface = new TinTucInterface() {
             @Override
-            public void getDanhSachThucUongModel(final ThucUongModel thucUongModel) {
-                //Log.d("ktNodeThucUong",thucUongModel.getTenthucuong() +"");
-                if(itemdaload!=thucUongModelList.size()){
-                    progressBar.setVisibility(View.VISIBLE);
-                }
-
+            public void getDanhSachTinTucModel(final TinTucModel tinTucModel) {
                 final List<Bitmap> bitmaps= new ArrayList<>();
-                for(String linkhinh: thucUongModel.getHinhanh()){
+                for(String linkhinh: tinTucModel.getHinhanhtintuc()){
                     StorageReference storageHinhAnh = FirebaseStorage.getInstance().getReference().child("hinhanh").child(linkhinh);//Lấy hình ảnh vị trí 0 (get(0)) trong list hình ảnh của 1 thức uống
                     //Thực hiện download
                     long ONE_MEGABYTE = 1024 * 1024;
@@ -79,11 +67,11 @@ public class ControllerThucUong {
                             //chuyển kiểu byte về bitmap:
                             Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
                             bitmaps.add(bitmap);
-                            thucUongModel.setBitmapList(bitmaps);
+                            tinTucModel.setBitmapList(bitmaps);
 
-                            if(thucUongModel.getBitmapList().size() == thucUongModel.getHinhanh().size()){
-                                thucUongModelList.add(thucUongModel);
-                                adapterRecyclerThucUong.notifyDataSetChanged();
+                            if(tinTucModel.getBitmapList().size() == tinTucModel.getHinhanhtintuc().size()){
+                                tinTucModelList.add(tinTucModel);
+                                adapterRecyclerTinTuc.notifyDataSetChanged();
                                 progressBar.setVisibility(View.GONE);
                             }
                         }
@@ -95,7 +83,7 @@ public class ControllerThucUong {
         };
 
         //lắng nghe sự kiện scroll của nested scrollview
-        nestedScrollViewThucUong.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+        nestedScrollViewTinTuc.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView nsv, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if (nsv.getChildAt(nsv.getChildCount() -1) !=null) //kiểm tra vị trí 0 có khác null k, nếu có con:
@@ -103,12 +91,13 @@ public class ControllerThucUong {
                     //kiểm tra scrollY có >= chiều cao của tất cả những con đang nằm trong nó lkhông
                     if(scrollY >= (nsv.getChildAt(nsv.getChildCount()-1)).getMeasuredHeight()- nsv.getMeasuredHeight()){
                         itemdaload +=8;
-                        thucUongModel.getDanhSachThucUong(thucUongInterface,itemdaload,itemdaload-8);
-
+                        tinTucModel.getDanhSachTinTuc(tinTucInterface,itemdaload,itemdaload-8);
                     }
                 }
             }
         });
-        thucUongModel.getDanhSachThucUong(thucUongInterface,itemdaload,0);
+
+
+        tinTucModel.getDanhSachTinTuc(tinTucInterface,itemdaload,0);
     }
 }
