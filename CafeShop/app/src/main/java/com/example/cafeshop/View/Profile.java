@@ -94,8 +94,6 @@ public class Profile extends Fragment {
                                 Glide.with(getContext())
                                         .load(uri)
                                         .into(imgUser);
-                                imgUser.setVisibility(View.GONE);
-                                imgUser.setVisibility(View.VISIBLE);
                             }
                         });
 

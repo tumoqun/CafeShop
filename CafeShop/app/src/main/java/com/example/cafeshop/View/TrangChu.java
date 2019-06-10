@@ -1,7 +1,9 @@
 package com.example.cafeshop.View;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -23,8 +25,19 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
 import com.example.cafeshop.Adapters.AdapterViewPagerTrangChu;
+import com.example.cafeshop.Model.ThanhVienModel;
 import com.example.cafeshop.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class TrangChu  extends AppCompatActivity implements  ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
     //Intent recv;
@@ -37,8 +50,12 @@ public class TrangChu  extends AppCompatActivity implements  ViewPager.OnPageCha
     NavigationView navigationView;
     ImageView menu;
     ImageView navigation_avartar;
-
+    TextView navigation_username;
+    TextView navigation_email;
+    String IdUser;
     ViewPager viewPagerTrangChu;
+    StorageReference storageReference;
+    DatabaseReference databaseReference;
     public  void onCreate (@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trangchu);
@@ -50,15 +67,41 @@ public class TrangChu  extends AppCompatActivity implements  ViewPager.OnPageCha
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(GravityCompat.START);
+                //setup navigation header theo thông tin user
+                View headview=navigationView.getHeaderView(0);
+                databaseReference= FirebaseDatabase.getInstance().getReference().child("thanhvien");
+                storageReference= FirebaseStorage.getInstance().getReference();
+                IdUser=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                navigation_avartar=headview.findViewById(R.id.navigation_avartar);
+                navigation_username=headview.findViewById(R.id.navigation_username);
+                navigation_email=headview.findViewById(R.id.navigation_email);
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        ThanhVienModel thanhVienModel = dataSnapshot.child(IdUser).getValue(ThanhVienModel.class);
+                        navigation_username.setText(thanhVienModel.getUsername());
+                        navigation_email.setText(thanhVienModel.getEmail());
+                        storageReference.child("/thanhvien/"+thanhVienModel.getHinhanh())
+                                .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Glide.with(getApplicationContext())
+                                        .load(uri)
+                                        .into(navigation_avartar);
+                            }
+                        });
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
         //tương tác với các nút trên navigationview
         navigationView=findViewById(R.id.nvTrangChu);
         setupDrawerContent(navigationView);
         //
-
-        //setup navigation header theo thông tin user
-        navigation_avartar=findViewById(R.id.navigation_avartar);
 
         rbthucuong = findViewById(R.id.rbThucUong);
         rbmonan = findViewById(R.id.rbMonAn);
