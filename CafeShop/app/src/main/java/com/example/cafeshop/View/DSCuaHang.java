@@ -15,7 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cafeshop.Adapters.AdapterViewPagerDSCuaHang;
+import com.example.cafeshop.Adapters.AdapterViewPagerCuaHang;
 //import com.example.cafeshop.Adapters.AdapterViewPagerTinTuc;
 import com.example.cafeshop.FontManager;
 import com.example.cafeshop.R;
@@ -61,9 +61,9 @@ public class DSCuaHang  extends AppCompatActivity implements  ViewPager.OnPageCh
         //Tìm viewpagerTinTuc ở trang chủ gán vào viewPagerTinTuc
         viewpagerdscuahang=(ViewPager)findViewById(R.id.viewpagerDSCuaHang);
         //Khởi tạo adapter hiển thị fragment cho viewpager
-        AdapterViewPagerDSCuaHang adapterViewPagerDSCuaHang = new AdapterViewPagerDSCuaHang((getSupportFragmentManager()));
+        AdapterViewPagerCuaHang adapterViewPagerCuaHang = new AdapterViewPagerCuaHang((getSupportFragmentManager()));
         //Gắn adapter vào viewPagerTinTuc vừa khai báo.
-        viewpagerdscuahang.setAdapter(adapterViewPagerDSCuaHang);
+        viewpagerdscuahang.setAdapter(adapterViewPagerCuaHang);
 
         //Lắng nghe sự kiện thay đổi page cho ViewPager
         viewpagerdscuahang.addOnPageChangeListener(this);

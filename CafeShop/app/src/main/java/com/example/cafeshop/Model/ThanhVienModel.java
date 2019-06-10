@@ -4,12 +4,29 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ThanhVienModel {
-    String hoten, sdt,hinhanh,email,diachi;
-    long diem;
-    DatabaseReference dataNodeThanhVien;
+    private String hoten;
+    private String sdt;
+    private String hinhanh;
+    private String email;
+    private String diachi;
 
-    ThanhVienModel(){
-        dataNodeThanhVien = FirebaseDatabase.getInstance().getReference().child("thanhvien");//tạo reference đến node thành viên
+    public ThanhVienModel(String hoten, String sdt, String hinhanh, String email, String diachi, String username, long diem) {
+        this.hoten = hoten;
+        this.sdt = sdt;
+        this.hinhanh = hinhanh;
+        this.email = email;
+        this.diachi = diachi;
+        this.username = username;
+        this.diem = diem;
+    }
+
+    private String username;
+
+
+    long diem;
+    private DatabaseReference dataNodeThanhVien;
+
+    public ThanhVienModel(){
     }
     public String getHoten() {
         return hoten;
@@ -59,10 +76,17 @@ public class ThanhVienModel {
         this.diem = diem;
     }
 
-    public  void ThemThongTinThanhVien(ThanhVienModel thanhVienModel){
-        dataNodeThanhVien.setValue(thanhVienModel);
-
+    public  void ThemThongTinThanhVien(ThanhVienModel thanhVienModel,String uid){
+        dataNodeThanhVien = FirebaseDatabase.getInstance().getReference().child("thanhvien");//tạo reference đến node thành viên
+        dataNodeThanhVien.child(uid).setValue(thanhVienModel);
     }
 
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

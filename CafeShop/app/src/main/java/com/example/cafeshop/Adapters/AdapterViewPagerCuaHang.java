@@ -4,17 +4,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.cafeshop.View.Fragments.FragmentCuaHang;
 import com.example.cafeshop.View.Fragments.FragmentMonAn;
 import com.example.cafeshop.View.Fragments.FragmentThucUong;
 import com.example.cafeshop.View.Fragments.FragmentYeuThich;
 
-public class AdapterViewPagerDSCuaHang extends FragmentStatePagerAdapter {
-    FragmentMonAn fmMonAn;
+public class AdapterViewPagerCuaHang extends FragmentStatePagerAdapter {
+    FragmentCuaHang fmCuaHang;
     FragmentThucUong fmThucUong;
 
-    public AdapterViewPagerDSCuaHang (FragmentManager fm) {
+    public AdapterViewPagerCuaHang (FragmentManager fm) {
         super(fm);
-        fmMonAn=new FragmentMonAn();
+        fmCuaHang=new FragmentCuaHang();
         fmThucUong = new FragmentThucUong();
     }
 
@@ -22,9 +23,9 @@ public class AdapterViewPagerDSCuaHang extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return fmThucUong;
+                return fmCuaHang;
             case 1:
-                return  fmMonAn;
+                return  fmThucUong;
 
             default: return null ;
         }

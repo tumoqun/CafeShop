@@ -5,12 +5,13 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     android:layout_marginTop="10dp"
     app:layout_goneMarginBottom="10dp"
     app:cardCornerRadius="10dp"
+
+    android:id="@+id/item_recyclerTinTuc"
     >
 
     <LinearLayout
