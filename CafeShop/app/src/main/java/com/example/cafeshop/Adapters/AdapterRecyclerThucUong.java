@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,21 +27,69 @@ public class AdapterRecyclerThucUong extends RecyclerView.Adapter<AdapterRecycle
 //    ImageView imgThucUong;
 //    Button btnDatHang;
 
+    private OnItemClicklistener mListener;
 
     public  AdapterRecyclerThucUong(List<ThucUongModel> thucUongModelList, int resource){
         this.thucUongModelList=thucUongModelList;
         this.resource=resource;
     }
 
+    public interface OnItemClicklistener{
+        void OnPlusClick(int position);
+        void OnMinusClick(int position);
+    }
+    public void setOnItemClickListener(OnItemClicklistener listener){
+        mListener=listener;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtTenThucUong;
         ImageView imgThucUong;
-        Button btnDatHang;
-        public ViewHolder(@NonNull View itemView) {
+        TextView txtDanhGia;
+        TextView txtGiaThucUong;
+        ImageButton btnThemDoUong;
+        ImageButton btnXoaDoUong;
+        public ViewHolder(@NonNull View itemView, final OnItemClicklistener listener) {
             super(itemView);
             txtTenThucUong=(TextView) itemView.findViewById(R.id.txtTenThucUong);
-            btnDatHang=(Button) itemView.findViewById(R.id.btnDatHang);
             imgThucUong=(ImageView) itemView.findViewById(R.id.imgThucUong);
+            txtDanhGia=(TextView) itemView.findViewById(R.id.txtDanhGiaThucUong);
+            txtGiaThucUong=(TextView) itemView.findViewById(R.id.txtGiaThucUong);
+            btnThemDoUong=itemView.findViewById(R.id.btnThemDoUong);
+            btnXoaDoUong=itemView.findViewById(R.id.btnXoaDoUong);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener!=null){
+                        int position=getAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            listener.OnPlusClick(position);
+                        }
+                    }
+                }
+            });
+            btnThemDoUong.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener!=null){
+                        int position=getAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            listener.OnPlusClick(position);
+                        }
+                    }
+                }
+            });
+            btnXoaDoUong.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener!=null){
+                        int position=getAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            listener.OnMinusClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -50,27 +99,20 @@ public class AdapterRecyclerThucUong extends RecyclerView.Adapter<AdapterRecycle
     //Khởi tạo giao diện:
     public AdapterRecyclerThucUong.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view= LayoutInflater.from(viewGroup.getContext()).inflate(resource,viewGroup,false);
-        return new ViewHolder(view);
+        AdapterRecyclerThucUong.ViewHolder viewHolder=new AdapterRecyclerThucUong.ViewHolder(view,mListener);
+        return viewHolder;
     }
 
     //Lấy đối tượng quán ăn là gọi ra
     @Override
-    public void onBindViewHolder(@NonNull final AdapterRecyclerThucUong.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
         ThucUongModel thucUongModel=thucUongModelList.get(i);
         viewHolder.txtTenThucUong.setText(thucUongModel.getTenthucuong());
+        viewHolder.txtDanhGia.setText(thucUongModel.getDanhgia() + "");
+        viewHolder.txtGiaThucUong.setText(thucUongModel.getGiatien() +"");
     //Kt quán ăn có hình không? Nếu như có hình thì download từ storage/hinhthucuong, phải implement storage từ Firebase
-        if(thucUongModel.getHinhanh().size()>0){
-            StorageReference storageHinhAnh = FirebaseStorage.getInstance().getReference().child("hinhanh").child(thucUongModel.getHinhanh().get(0));//Lấy hình ảnh vị trí 0 (get(0)) trong list hình ảnh của 1 thức uống
-            //Thực hiện download
-            long ONE_MEGABYTE = 1024 * 1024;
-            storageHinhAnh.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    //chuyển kiểu byte về bitmap:
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                    viewHolder.imgThucUong.setImageBitmap(bitmap);
-                }
-            });
+        if(thucUongModel.getBitmapList().size()>0){
+            viewHolder.imgThucUong.setImageBitmap(thucUongModel.getBitmapList().get(0));
         }
     }
 

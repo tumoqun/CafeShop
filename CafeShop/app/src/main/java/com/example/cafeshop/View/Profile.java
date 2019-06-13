@@ -19,11 +19,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.cafeshop.Model.ThanhVienModel;
 import com.example.cafeshop.R;
-import com.google.android.gms.auth.api.signin.internal.Storage;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,8 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.UUID;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -51,6 +46,7 @@ public class Profile extends Fragment {
     final int RESULT_IMG=111;
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
+    String idHinhAnh;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view=inflater.inflate(R.layout.profile,container,false);
@@ -63,10 +59,10 @@ public class Profile extends Fragment {
         btnAvartar=view.findViewById(R.id.btnAvartar);
         btnCapNhatThongTin=view.findViewById(R.id.btnCapNhatUser);
         edtUsername=view.findViewById(R.id.edtUserNname);
-        final ThanhVienModel thanhVienModel;
         final String userID= FirebaseAuth.getInstance().getCurrentUser().getUid(); //lấy user ID
         databaseReference= FirebaseDatabase.getInstance().getReference().child("thanhvien");
         storageReference= FirebaseStorage.getInstance().getReference();
+        idHinhAnh=FirebaseAuth.getInstance().getCurrentUser().getUid();
         //Xuất thông tin user
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -83,12 +79,13 @@ public class Profile extends Fragment {
                         .addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                // chỗ này ông sẽ có uri
                                 Glide.with(getContext())
                                         .load(uri)
                                         .into(imgUser);
                             }
                         });
+
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -104,19 +101,22 @@ public class Profile extends Fragment {
                 thanhVienModel.setUsername(edtUsername.getText().toString());
                 thanhVienModel.setSdt(edtSDT.getText().toString());
                 thanhVienModel.setDiachi(edtDiaChi.getText().toString());
-                //Lấy 1 id bất kì và convert sang 1 String
-                String id=UUID.randomUUID().toString();
+                thanhVienModel.setEmail(tvEmail.getText().toString());
+                if(img!=null) //nếu có chọn lại hình thì mới upload lên lại hình mới
+                {
                 //lưu tên của id vào tên hình
-                thanhVienModel.setHinhanh(id);
+                thanhVienModel.setHinhanh(idHinhAnh);
                 //cho hình đó lưu dưới tên của id vừa được tạo
-                storageReference=storageReference.child("thanhvien/"+ id);
+                storageReference=storageReference.child("/thanhvien/"+ idHinhAnh);
                 //tải hình lên
-                storageReference.putFile(img);
+                storageReference.putFile(img);}
+                //còn không thì lấy hình cũ
+                thanhVienModel.setHinhanh(idHinhAnh);
                 databaseReference.child(userID).setValue(thanhVienModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(getContext(), "cập nhật thông tin thành công!", Toast.LENGTH_SHORT).show();
-                        Intent iTrangChu=new Intent(getContext(), TrangChu.class);
+                        Intent iTrangChu=new Intent(getContext(), TinTuc.class);
                         startActivity(iTrangChu);
                     }
                 });
@@ -136,7 +136,6 @@ public class Profile extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(resultCode==RESULT_OK && requestCode==RESULT_IMG){
-            //tải ảnh lên thanh bình luận
             imgUser.setImageURI(data.getData());
             //lấy uri của hình ảnh
             img=data.getData();
