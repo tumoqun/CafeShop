@@ -1,5 +1,6 @@
 package com.example.cafeshop;
 
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +18,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dangnhap);
-
     }
 
 }
+//
+//    Typeface iconFont;
+//    Typeface iconFontItemThucUong;
+////sử dụng font awesome:
+//        iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
+//                FontManager.markAsIconContainer(findViewById(R.id.trangchulayout), iconFont);
+//
+//                iconFontItemThucUong = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
+//                FontManager.markAsIconContainer(findViewById(R.id.layoutitemthucuong), iconFontItemThucUong);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_trangchu"
     android:layout_width="match_parent"
@@ -17,7 +18,9 @@
             android:id="@+id/HomeToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/holo_orange_dark">
+            android:background="@android:color/holo_orange_dark"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
 
             <ImageView
                 android:id="@+id/menu"
@@ -25,59 +28,112 @@
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
 
-            <RadioGroup
-                android:id="@+id/rgMonAnThucUong"
+            <!--<TextView-->
+            <!--android:id="@+id/menu"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/icon_alignleft"-->
+            <!--android:textSize="20sp"-->
+            <!--android:textColor="@color/colorWhite"/>-->
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
+                android:text="CAFESHOP"
+                android:textSize="17sp"
+                android:textColor="@color/colorWhite"
+                android:layout_gravity="center"/>
 
-                <RadioButton
-                    android:id="@+id/rbThucUong"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_radio_thucuong"
-                    android:button="@android:color/transparent"
-                    android:checked="true"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="Thức uống"
-                    android:textColor="@drawable/change_textcolor_radiogroup"
-                    android:textColorLink="@color/colorPrimary" />
-
-                <RadioButton
-                    android:id="@+id/rbMonAn"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_radio_monan"
-                    android:button="@android:color/transparent"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="Món ăn"
-                    android:textColor="@drawable/change_textcolor_radiogroup" />
-            </RadioGroup>
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="right"
-                android:layout_marginRight="10dp"
-                app:srcCompat="@drawable/com_facebook_button_icon" />
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logowhitesesized"
+                android:layout_gravity="right|center"/>
         </android.support.v7.widget.Toolbar>
 
-        <FrameLayout
-            android:id="@+id/viewpager_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <!--<FrameLayout-->
+        <!--android:id="@+id/viewpager_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewpager_TrangChu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </FrameLayout>
+        <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/viewpager_TrangChu"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+        <!--</FrameLayout>-->
+
+        <FrameLayout
+            android:id="@+id/frameTinTuc"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGrey" />
+
+        <RadioGroup
+            android:id="@+id/rgBottomBarTinTuc"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rbTinTucTinTuc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="2dp"
+                android:text="@string/btn_tintuc_string"
+                android:textColor="@drawable/change_textcolor_blacktororange" >
+            </RadioButton>
+            <RadioButton
+                android:id="@+id/rbThucDonTinTuc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="2dp"
+                android:text="@string/btn_thucdon_string"
+                android:textColor="@drawable/change_textcolor_blacktororange" />
+            <RadioButton
+                android:id="@+id/rbCuaHangTinTuc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="2dp"
+                android:text="@string/btn_cuahang_string"
+                android:textColor="@drawable/change_textcolor_blacktororange" />
+            <RadioButton
+                android:id="@+id/rbTaiKhoanTinTuc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/change_buttoncolor_whitetobackgroundgrey"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="2dp"
+                android:text="@string/btn_taikhoan_string"
+                android:textColor="@drawable/change_textcolor_blacktororange" />
+        </RadioGroup>
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
