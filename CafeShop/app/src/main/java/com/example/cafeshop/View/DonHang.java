@@ -32,6 +32,7 @@ public class DonHang extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donhang);
         Intent intent=this.getIntent();
+        String IdUser=intent.getStringExtra("mã user");
         String madonhang=intent.getStringExtra("mã đơn hàng");
         tvMaDonHang=findViewById(R.id.tvMaDonHang);
         tvThoiGian=findViewById(R.id.tvThoiGian);
@@ -43,7 +44,7 @@ public class DonHang extends AppCompatActivity {
         btnQuayVeTrangChu=findViewById(R.id.btnTroVeTrangChu);
 
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("donhang");
-        databaseReference.child(madonhang).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(IdUser).child(madonhang).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 DonHangModel donHangModel=dataSnapshot.getValue(DonHangModel.class);

@@ -84,7 +84,7 @@ public class ThucDon  extends AppCompatActivity implements  ViewPager.OnPageChan
         setContentView(R.layout.thucdon);
 
         //lấy thông tin người dùng : họ tên và địa chỉ
-        String IdUser= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        final String IdUser= FirebaseAuth.getInstance().getCurrentUser().getUid();
         mDatabase1.child(IdUser).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -146,17 +146,21 @@ public class ThucDon  extends AppCompatActivity implements  ViewPager.OnPageChan
                 donHangModel.setDiachi(Diachi);
                 donHangModel.setNguoidat(Hoten);
                 donHangModel.setSDT(SDT);
+                donHangModel.setIdUser(IdUser);
                 donHangModel.setChitietdonhang(GioHangModel.Instance().ThongTinDoUong());
                 donHangModel.setTonggia(String.valueOf(GioHangModel.Instance().TinhTongGia()));
                 donHangModel.setMadonhang(idDonHang);
                 //lưu xuống database
-                mDatabase2.child(idDonHang).setValue(donHangModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                mDatabase2.child(IdUser).child(idDonHang).setValue(donHangModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                     }
                 });
+                //làm trống lại giỏ hàng
+                GioHangModel.Instance().ResetGioHang();
                 //chuyển qua activity xuất thông tin đơn hàng
                 Intent intent=new Intent(getApplicationContext(),DonHang.class);
+                intent.putExtra("mã user",IdUser);
                 intent.putExtra("mã đơn hàng",idDonHang);
                 startActivity(intent);
             }

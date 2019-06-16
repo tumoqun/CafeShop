@@ -8,6 +8,15 @@ public class DonHangModel {
     String chitietdonhang;
     String tonggia;
     String SDT;
+    String IdUser;
+
+    public String getIdUser() {
+        return IdUser;
+    }
+
+    public void setIdUser(String idUser) {
+        IdUser = idUser;
+    }
 
     public DonHangModel(){
 
@@ -21,7 +30,7 @@ public class DonHangModel {
         this.SDT = SDT;
     }
 
-    public DonHangModel(String madonhang, String thoigian, String nguoidat, String diachi, String chitietdonhang, String tonggia, String SDT) {
+    public DonHangModel(String madonhang, String thoigian, String nguoidat, String diachi, String chitietdonhang, String tonggia, String SDT, String idUser) {
         this.madonhang = madonhang;
         this.thoigian = thoigian;
         this.nguoidat = nguoidat;
@@ -29,6 +38,7 @@ public class DonHangModel {
         this.chitietdonhang = chitietdonhang;
         this.tonggia = tonggia;
         this.SDT = SDT;
+        IdUser = idUser;
     }
 
     public String getMadonhang() {
