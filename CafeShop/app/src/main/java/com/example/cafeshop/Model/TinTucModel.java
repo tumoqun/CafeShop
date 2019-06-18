@@ -66,7 +66,6 @@ public class TinTucModel {
         nodeRoot = FirebaseDatabase.getInstance().getReference();
     }
 
-
     private  DataSnapshot dataRoot;
     //Cần lấy nhiều dữ liệu của nhiều bảng => lắng nghe node cha lớn nhất (root)
     public  void getDanhSachTinTuc(final TinTucInterface tinTucInterface, final int itemtieptheo, final int itemdaload){

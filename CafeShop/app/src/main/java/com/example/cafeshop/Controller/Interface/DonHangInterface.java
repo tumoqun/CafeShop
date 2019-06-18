@@ -2,6 +2,6 @@ package com.example.cafeshop.Controller.Interface;
 
 import com.example.cafeshop.Model.DonHangModel;
 
-public interface LichSuDatHangInterface {
-    void getLichSuDatHangModel(DonHangModel donHangModel);
+public interface DonHangInterface {
+    void getDanhSachDonHangModel(DonHangModel donHangModel);
 }
