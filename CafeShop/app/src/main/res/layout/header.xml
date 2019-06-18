@@ -3,46 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="160dp"
     android:orientation="vertical"
-    android:background="@drawable/navbackground"
-    android:gravity="center">
+    android:background="@drawable/lavang"
+    android:padding="20dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_margin="13dp">
     <ImageView
         android:id="@+id/navigation_avartar"
         android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:src="@drawable/nullava"
-        android:scaleType="centerCrop"/>
+        android:layout_height="75dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="6dp">
-            <TextView
-                android:id="@+id/navigation_username"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Họ và tên"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/navigation_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/navigation_email"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="email@gmail.com"
-                android:textColor="@color/colorAccent"
-                android:textSize="12sp"
-                android:layout_weight="1"/>
-        </LinearLayout>
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/navigation_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="15sp" />
 </LinearLayout>

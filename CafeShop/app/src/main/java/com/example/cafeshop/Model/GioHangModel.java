@@ -80,8 +80,4 @@ public class GioHangModel {
         }
         return temp;
     }
-    public void ResetGioHang(){
-        thucUongModelList.clear();
-        TongGia=0;
-    }
 }

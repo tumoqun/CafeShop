@@ -1,6 +1,5 @@
 package com.example.cafeshop.View;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -16,13 +15,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.cafeshop.FontManager;
@@ -149,27 +146,6 @@ public class TinTuc  extends AppCompatActivity implements RadioGroup.OnCheckedCh
                 Intent iTrangChu=new Intent(this, TinTuc.class);
                 startActivity(iTrangChu);
                 break;
-            case R.id.logout:
-                final Intent iDangNhap=new Intent(this,DangNhap.class);
-                final Dialog dangxuat=new Dialog(TinTuc.this);
-                dangxuat.setContentView(R.layout.dangxuat);
-                Button btnCo=dangxuat.findViewById(R.id.btnCoDangXuat);
-                Button btnKhong=dangxuat.findViewById(R.id.btnKhongDangXuat);
-                dangxuat.show();
-                btnCo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(iDangNhap);
-
-                    }
-                    });
-                btnKhong.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dangxuat.dismiss();
-                    }
-                });
         }
         menuItem.setChecked(true);
         // Set action bar title
