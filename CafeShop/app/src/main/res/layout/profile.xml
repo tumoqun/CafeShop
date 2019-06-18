@@ -6,19 +6,23 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     android:orientation="vertical"
-    android:visibility="visible">
+    android:visibility="visible"
+    android:padding="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/change_buttoncolor_whitetoorange_border"
+        >
 
         <ImageView
             android:id="@+id/imgUser"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY" />
-
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/nullava"/>
+        <!--android:scaleType="fitXY"-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -26,31 +30,58 @@
 
             <TextView
                 android:id="@+id/tvUsername"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Username" />
-
+                android:gravity="center|left"
+                android:text="Username"
+                android:layout_marginLeft="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDarkOrange"
+                />
             <TextView
                 android:id="@+id/tvEmail"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Email " />
+                android:gravity="center|left"
+                android:text="Email "
+                android:layout_marginLeft="10dp"/>
         </LinearLayout>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:text="CẬP NHẬT THÔNG TIN"
+        android:textColor="@color/colorDarkOrange"/>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:orientation="vertical"
+    android:layout_weight="1">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <TextView
             android:id="@+id/tvUsername_Edit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Username" />
+            android:text="Username"
+            android:textStyle="bold"
+            android:gravity="center|left"
+            />
 
         <EditText
             android:id="@+id/edtUserNname"
@@ -61,18 +92,22 @@
             android:inputType="textPersonName" />
 
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        >
 
         <TextView
             android:id="@+id/tvHoten"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Họ tên" />
+            android:text="Họ tên"
+            android:textStyle="bold"
+            android:gravity="center|left"/>
 
         <EditText
             android:id="@+id/edtHoten"
@@ -87,14 +122,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/tvSDT"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Số điện thoại" />
+            android:text="Số điện thoại"
+            android:textStyle="bold"
+            android:gravity="center|left"/>
 
         <EditText
             android:id="@+id/edtSDT"
@@ -109,14 +148,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/tvDiaChi"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Địa chỉ " />
+            android:text="Địa chỉ "
+            android:textStyle="bold"
+            android:gravity="center|left"/>
 
         <EditText
             android:id="@+id/edtDiaChi"
@@ -131,29 +174,41 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Ảnh đại diện" />
+            android:text="Ảnh đại diện"
+            android:textStyle="bold"
+            android:gravity="center|left"/>
 
         <ImageButton
             android:id="@+id/btnAvartar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+
+            android:background="@drawable/change_buttoncolor_whitetoorange_border"
             app:srcCompat="@android:drawable/ic_menu_camera" />
 
     </LinearLayout>
+</LinearLayout>
+
 
     <Button
         android:id="@+id/btnCapNhatUser"
-        android:layout_width="match_parent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Cập nhật thông tin" />
+        android:layout_gravity="center"
+        android:text="Cập nhật thông tin"
+        android:background="@drawable/change_buttoncolor_darkorangetowhite_withradius"
+        android:textColor="@drawable/change_textcolor_whitetodarkorange"/>
 
 </LinearLayout>

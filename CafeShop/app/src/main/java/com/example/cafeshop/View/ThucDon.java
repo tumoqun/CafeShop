@@ -2,14 +2,14 @@ package com.example.cafeshop.View;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cafeshop.Adapters.AdapterViewPagerThucDon;
 import com.example.cafeshop.FontManager;
@@ -37,8 +36,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.UUID;
-
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class ThucDon  extends AppCompatActivity implements  ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
     //Intent recv;
@@ -121,6 +118,7 @@ public class ThucDon  extends AppCompatActivity implements  ViewPager.OnPageChan
         rbyeuthichtd = findViewById(R.id.rbYeuThichThucDon);
         rgthucdontd = findViewById(R.id.rgThucDon);
         giohang=new Dialog(ThucDon.this);
+        giohang.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         giohang.setContentView(R.layout.giohang);
         imgGioHang=findViewById(R.id.imgGioHang);
         tvGioHang=giohang.findViewById(R.id.tvChiTietGioHang);
