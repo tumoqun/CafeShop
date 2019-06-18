@@ -3,13 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#FF8800</color>
     <color name="colorWhite">#FFFFFF</color>
-<<<<<<< HEAD
     <!--<color name="colorBackGroundGrey">#F2F2F2</color>-->
     <color name="colorBackGroundGrey">#e0e2e7</color>
-=======
-    <color name="colorAccent">#FFFFFF</color>
-    <color name="colorBackGroundGrey">#F2F2F2</color>
->>>>>>> parent of b933648... đã xong chức năng bình luận
     <color name="colorDarkOrange">#FF8800 </color>
     <color name="colorBlack">#000000</color>
     <color name="colorLightOrange">#ffddbb</color>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/home" android:title="Trang chủ" android:icon="@drawable/ic_home_black_24dp"/>
-    <item android:id="@+id/profile" android:title="Profile" android:icon="@drawable/ic_account_box_black_24dp"/>
+    <item android:id="@+id/profile" android:title="Thông tin cá nhân" android:icon="@drawable/ic_account_box_black_24dp"/>
+    <item
+        android:id="@+id/orderhistory"
+        android:icon="@android:drawable/checkbox_on_background"
+        android:title="Lịch sử đặt hàng"/>
     <item android:id="@+id/logout" android:title="Đăng Xuất" android:icon="@drawable/ic_exit_to_app_black_24dp" />
-
 </menu>

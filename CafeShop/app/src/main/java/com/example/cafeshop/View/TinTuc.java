@@ -1,5 +1,6 @@
 package com.example.cafeshop.View;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -15,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -25,6 +27,7 @@ import com.bumptech.glide.Glide;
 import com.example.cafeshop.FontManager;
 import com.example.cafeshop.Model.ThanhVienModel;
 import com.example.cafeshop.R;
+import com.example.cafeshop.View.Fragments.FragmentLSDonHang;
 import com.example.cafeshop.View.Fragments.FragmentTinTuc;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -146,6 +149,32 @@ public class TinTuc  extends AppCompatActivity implements RadioGroup.OnCheckedCh
                 Intent iTrangChu=new Intent(this, TinTuc.class);
                 startActivity(iTrangChu);
                 break;
+            case R.id.logout:
+                final Intent iDangNhap=new Intent(this,DangNhap.class);
+                final Dialog dangxuat=new Dialog(TinTuc.this);
+                dangxuat.setContentView(R.layout.dangxuat);
+                Button btnCo=dangxuat.findViewById(R.id.btnCoDangXuat);
+                Button btnKhong=dangxuat.findViewById(R.id.btnKhongDangXuat);
+                dangxuat.show();
+                btnCo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(iDangNhap);
+
+                    }
+                    });
+                btnKhong.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dangxuat.dismiss();
+                    }
+                });
+                break;
+            //Minh mới thêm
+            case R.id.orderhistory:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameTinTuc,new FragmentLSDonHang()).addToBackStack(null).commit();
+                break;
         }
         menuItem.setChecked(true);
         // Set action bar title
@@ -184,7 +213,7 @@ public class TinTuc  extends AppCompatActivity implements RadioGroup.OnCheckedCh
                 break;
         }
     }
-    ///End Các phương thức default phải Override của implements  ViewPager.OnPageChangeListener:
+
     @Override
     protected void onResume() {
         super.onResume();

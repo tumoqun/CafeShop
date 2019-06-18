@@ -139,16 +139,9 @@
     <android.support.design.widget.NavigationView
         android:id="@+id/nvTrangChu"
         android:layout_width="wrap_content"
-<<<<<<< HEAD
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/colorAccent"
         app:headerLayout="@layout/header"
         app:menu="@menu/drawermenu" />
 </android.support.v4.widget.DrawerLayout>
-=======
-        android:layout_height="match_parent">
-
-    </android.support.v4.view.ViewPager>
-</LinearLayout>
->>>>>>> parent of b933648... đã xong chức năng bình luận
