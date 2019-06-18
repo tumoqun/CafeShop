@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--trạng thái checked-->
-    <item android:drawable="@drawable/iconplus2of2" android:state_pressed="true" >
-        <shape android:shape="oval">
-            <!--<stroke android:color="#1E90FF" android:width="5dp" />-->
-            <size android:width="30dp" android:height="30dp"/>
-
-
-        </shape>
-    </item>
-    <!--Trạng thái mặc định-->
-    <item android:drawable="@drawable/iconplusorange">
-        <shape android:shape="oval">
-            <size android:width="30dp" android:height="30dp"/>
-        </shape>
-    </item>
+    <item android:drawable="@drawable/iconminusgrey2" android:state_pressed="true" />
+    <item android:drawable="@drawable/iconminusgrey" android:state_pressed="false" />
 </selector>
-    <!--<solid android:color="@color/colorWhite"/>-->

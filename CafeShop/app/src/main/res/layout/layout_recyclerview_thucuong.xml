@@ -72,11 +72,10 @@
 
         <ImageButton
             android:id="@+id/btnXoaDoUong"
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/com_facebook_auth_dialog_header_background"
-            app:srcCompat="@drawable/iconminusgreyresized" />
+            android:background="@drawable/change_minusbutton"
+        />
 
         <TextView
             android:id="@+id/txtGiaThucUong"
@@ -85,16 +84,16 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="30.000đ"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:id="@+id/btnThemDoUong"
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:background="@drawable/change_pluscirclebutton"
             android:gravity="right"
-            app:srcCompat="@drawable/iconplusorangeresized30" />
+           />
    </LinearLayout>
 
 
