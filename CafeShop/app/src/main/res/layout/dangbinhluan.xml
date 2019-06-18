@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+=======
+>>>>>>> 1512325_1
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -14,6 +17,7 @@
         android:theme="?attr/actionBarTheme">
 
         <TextView
+<<<<<<< HEAD
             android:id="@+id/txtVietBinhLuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,6 +27,8 @@
             android:textSize="24sp" />
 
         <TextView
+=======
+>>>>>>> 1512325_1
             android:id="@+id/txtDangBinhLuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,6 +36,7 @@
             android:layout_marginRight="5dp"
             android:padding="5dp"
             android:text="Đăng"
+<<<<<<< HEAD
             android:textColor="@color/colorAccent"
             android:textSize="24sp" />
 
@@ -97,3 +104,16 @@
 
 
 </LinearLayout>
+=======
+            android:textColor="@color/colorAccent" />
+        />
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height=""></LinearLayout>
+
+
+
+</LinearLayout>
+>>>>>>> 1512325_1
