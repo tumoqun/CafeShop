@@ -22,12 +22,12 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.cafeshop.FontManager;
 import com.example.cafeshop.Model.ThanhVienModel;
 import com.example.cafeshop.R;
+import com.example.cafeshop.View.Fragments.FragmentLSDonHang;
 import com.example.cafeshop.View.Fragments.FragmentTinTuc;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -170,6 +170,11 @@ public class TinTuc  extends AppCompatActivity implements RadioGroup.OnCheckedCh
                         dangxuat.dismiss();
                     }
                 });
+                break;
+            //Minh mới thêm
+            case R.id.orderhistory:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameTinTuc,new FragmentLSDonHang()).addToBackStack(null).commit();
+                break;
         }
         menuItem.setChecked(true);
         // Set action bar title
@@ -208,7 +213,7 @@ public class TinTuc  extends AppCompatActivity implements RadioGroup.OnCheckedCh
                 break;
         }
     }
-    ///End Các phương thức default phải Override của implements  ViewPager.OnPageChangeListener:
+
     @Override
     protected void onResume() {
         super.onResume();

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackGroundGrey"
+    android:id="@+id/layoutthucdon">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarThucDon"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/holo_orange_dark">
+
+
+        <Button
+        android:id="@+id/btnBackThucDon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center|left"
+        android:text="Trở về"
+        android:textColor="@drawable/change_textcolor_whitetoblack"
+         />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lịch sử đặt hàng"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"/>
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right" />
+
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+
+    <FrameLayout
+        android:id="@+id/frameLSDatHang"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>
+
