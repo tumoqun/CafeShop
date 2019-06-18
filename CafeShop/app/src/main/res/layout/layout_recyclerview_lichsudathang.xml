@@ -11,7 +11,7 @@
     app:layout_goneMarginBottom="10dp"
     app:cardCornerRadius="10dp"
 
-    android:id="@+id/item_recyclerTinTuc"
+    android:id="@+id/item_recyclerLSDatHang"
     >
 
 
